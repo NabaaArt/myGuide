@@ -1,0 +1,31 @@
+.searchBox {
+    display: flex;
+    margin: auto;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    padding-left: 16px;
+    height: 48px;
+    width: 1000px;
+    background-color: #eee;
+    justify-content: space-between;
+  }
+  
+  .input {
+    width: 200px;
+    height: 32px;
+    border: none;
+    outline: none;
+    background-color: #eee;
+    font-size: 20px;
+  }
+  
+  .button{
+      border: none;
+      padding: 8px;
+      font-size: 20px;
+      background-color: transparent;
+      margin-right: 16px;    
+  }
+  
