@@ -1,0 +1,58 @@
+.container {
+  position: relative;
+  font-family: Arial;
+  
+}
+.copmpanyImg{
+  border-radius: 50%;
+ height: 150px;
+}
+.companyInfo{
+  display: flex;
+  width: 90%;
+  background: transparent;
+  font-weight: bold;
+  margin:auto;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #eef3fe;
+  align-items: center;
+
+}
+.textBlock {
+  width: 100%;
+   
+}
+.alignRow {
+  display: flex;
+  align-items: flex-end;
+  color: var(--text-secondary-color);
+  margin: 5px 0px;
+}
+
+.companyPhoneNumber {
+  color: var(--text-secondary-color);
+}
+.companyEmail {
+  color: var(--text-secondary-color);
+}
+.companyEmail {
+  color: var(--text-secondary-color);
+}
+.companyAddress {
+  color: var(--text-secondary-color);
+}
+.companyName {
+  color: var(--primary-color);
+}
+.companyTitle {
+  color: var(--text-secondary-color);
+  margin-top: 8px;
+  margin-bottom: 30px;
+}
+
+.companyIcons {
+  color: var(--text-secondary-color);
+  margin-right: 12px;
+}

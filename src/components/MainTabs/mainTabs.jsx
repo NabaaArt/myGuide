@@ -2,7 +2,7 @@
 import styles from './mainTabs.module.css'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-
+import JobCard from '../JobCard/jobCard';
 
 
 const MainTabs = () => {
@@ -15,8 +15,13 @@ const MainTabs = () => {
                 <Tab>Skills</Tab>
             </TabList>
 
-            <TabPanel>
+            <TabPanel >
+                <div className={styles.tabContent}>
+                    
+                
                 <h2>Any content 1</h2>
+                </div>
+                <JobCard></JobCard>
             </TabPanel>
             <TabPanel>
                 <h2>Any content 2</h2>

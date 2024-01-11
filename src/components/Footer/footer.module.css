@@ -1,0 +1,23 @@
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--text-color);
+    color: white;
+    text-align: center;
+ display: flex;
+justify-content: space-around;
+ height: 50px;
+ align-items: center;
+
+} 
+.contactLink{
+    color: white;
+    text-decoration: none;
+    
+}
+.webInfo{
+  display: flex;  
+  justify-content: space-between;
+}

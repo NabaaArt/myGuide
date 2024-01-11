@@ -12,5 +12,19 @@
   .header .content ul {
     display: flex;
     gap: 20px;
+    list-style: none;
+    
   }
-  
+
+  .link {
+    color:var(--text-color);
+    text-decoration: none;
+  }
+.logo{
+  display: flex;
+
+}
+.logo h2{
+  margin-right: 10px;
+  color: var(--text-color);
+}

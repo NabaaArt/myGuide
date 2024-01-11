@@ -1,4 +1,5 @@
 .background{
     height: 400px;
-    background-color: rgb(178, 188, 208);
+    background-color: var(  --light-primary-color);
+    width: 100%;
   }

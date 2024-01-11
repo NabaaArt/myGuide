@@ -1,8 +1,12 @@
 
 .mainTabs {
     background-color: white;
-    margin: auto;
+
     max-width: 300;
+    position: relative; /* Set the position property if necessary */
+    margin-top: 16px;
+ 
+  
   }
   
   

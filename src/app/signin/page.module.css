@@ -1,0 +1,75 @@
+.container {
+  padding: 16px;
+  background-color: white;
+  margin: auto;
+  width: 500px;
+  margin-top: 100px;
+}
+.container h1 {
+  color: var(--primary-color);
+  margin-bottom: 48px;
+}
+.container h4 {
+  margin-top: 20px;
+  color: var(--primary-color);
+}
+.input {
+  width: 94%;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+.input:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+.signInBtn {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 16px 20px;
+  font-size: 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+  border-radius: 8px;
+}
+
+.signInBtn:hover {
+  opacity: 1;
+}
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+
+.dropdownContainer {
+  margin-top: 8px;
+  background: #f1f1f1;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropdownInput {
+  
+  margin-left: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  /* Add more styling as needed */
+}

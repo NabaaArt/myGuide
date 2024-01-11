@@ -7,4 +7,5 @@ export const useAppStore = create((set) => ({
   setOpen: (isOpen) => set({ isOpen }),
   setSearchKey: (searchKey) => set({ searchKey }),
   setCart: (cart) => set({ cart }),
+  
 }));

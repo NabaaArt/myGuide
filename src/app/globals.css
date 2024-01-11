@@ -2,5 +2,27 @@
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  font-weight: lighter;
 }
 
+
+ :root {
+ --primary-color: rgb(26, 62, 125);
+  --primary-color-hover: #52d18b;
+  --primary-input-hover: #c6f8dc;
+  --secondary-color: rgb(178, 188, 208);
+  --secondary-color-hover: #3f3c3c;
+  --default-color: #f5f5f5;
+  --btn-radius: 8px;
+  --tag-radius: 24px;
+  --radius: 8px;
+  --text-color: rgb(26, 62, 125);
+  --text-secondary-color: rgba(69, 67, 67, 0.796);
+  --bk-color: #fff;
+  --light-primary-color:rgb(178, 188, 208);
+  --border-color: #e0e0e0;
+  --error-color: #ff0000;
+  --warning-color: #ff7a00;
+  --success-color: #46b276;
+  --background-color: #f0f0f0;
+}

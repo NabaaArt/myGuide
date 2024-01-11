@@ -1,0 +1,106 @@
+.userProfileImg {
+  border-radius: 50%;
+}
+.alignRow {
+
+  display: flex;
+  align-items: flex-end;
+  color: var(--text-secondary-color);
+  margin: 5px 0px;
+}
+.userInfoProfile {
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--light-primary-color);
+  padding: 20px;
+}
+.userPhoneNumber {
+  color: var(--text-secondary-color);
+}
+.userEmail {
+  color: var(--text-secondary-color);
+}
+.userTextInfo {
+  margin: 15px 20px;
+}
+.userJobTitle {
+  margin-bottom: 20px;
+}
+
+.userIcons {
+  color: var(--text-secondary-color);
+  margin-right: 12px;
+}
+
+.leftcolumn {
+  float: left;
+  width: 75%;
+}
+
+.rightcolumn {
+  float: left;
+  width: 25%;
+  padding-left: 20px;
+}
+
+.card {
+  background-color: var(--background-color);
+  padding: 20px;
+  margin-top: 16px;
+  border-radius: 8px;
+}
+
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+}
+
+.row {
+  display: flex;
+  margin: 20px 50px;
+  align-items: start;
+}
+
+.inlineRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0px;
+}
+
+.jobDescription {
+  color: var(--text-secondary-color);
+  margin: 15px 0px;
+}
+.headTitle {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.langName {
+  color: var(--text-secondary-color);
+  margin: 8px 0px;
+}
+.education {
+  color: var(--text-secondary-color);
+  margin: 8px 0px;
+}
+.skillName {
+  color: var(--text-secondary-color);
+  margin: 8px 0px;
+}
+
+.certificationName {
+  color: var(--text-secondary-color);
+  margin: 8px 0px;
+}
+
+.lightLine {
+  color: var(--border-color);
+  border: 1px solid var(--border-color);
+}
+.userName{
+  font-weight: bold;
+}

@@ -1,0 +1,50 @@
+.container {
+    border: 1px solid #ccc;
+    background-color: #eee;
+    padding: 16px;
+    margin: auto ;
+    width: 700px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+  }
+  
+  .container::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  .companyImg {
+    float: left;
+    margin-right: 20px;
+    border-radius: 50%;
+  }
+  
+  
+  
+  @media (max-width: 500px) {
+    .container {
+        text-align: center;
+    }
+    .container img {
+        margin: auto;
+        float: none;
+        display: block;
+    }
+  }
+
+  .companyAddress{
+  
+    margin: 10px 0px;
+  color: var(--text-secondary-color);
+  
+  }
+  .companyInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .companyName {
+    color: var(--primary-color);
+    font-weight: bold;
+  }
