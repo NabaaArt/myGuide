@@ -1,9 +1,10 @@
 import styles from "./page.module.css";
-import Background from "../../components/Background/background";
+import Header from "../../components/Header/header";
+
 const Singin = () => {
   return (
     <div>
-
+<Header></Header>
       <form>
         <div className={styles.container}>
           <h1>SIGN IN</h1>

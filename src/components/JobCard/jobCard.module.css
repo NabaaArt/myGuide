@@ -37,7 +37,7 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 16px;
   text-align: start;
-  background-color: #f1f1f1;
+  background-color: var( --background-color);
   border-radius: 8px;
   margin-bottom: 10px;
   position: relative;
@@ -70,6 +70,7 @@
 .companyName {
   color: var(--primary-color);
   font-weight: bold;
+  margin-left: 5px;
 }
 .applyButton:hover {
   background-color: var(--text-secondary-color);

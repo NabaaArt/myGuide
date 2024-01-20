@@ -1,0 +1,31 @@
+.container {
+  border: 1px solid #ccc;
+  background-color: #eee;
+  padding: 16px;
+  margin: auto;
+  width: 700px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+@media (max-width: 500px) {
+  .container {
+    text-align: center;
+  }
+}
+
+.answer {
+  margin: 15px 0px;
+  color: var(--text-secondary-color);
+}
+
+.question {
+  color: var(--primary-color);
+  font-weight: bold;
+}

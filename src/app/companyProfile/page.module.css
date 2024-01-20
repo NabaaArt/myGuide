@@ -10,8 +10,6 @@
 .companyInfo{
   display: flex;
   width: 90%;
-  background: transparent;
-  font-weight: bold;
   margin:auto;
   padding: 20px;
   border-radius: 8px;
@@ -45,6 +43,7 @@
 }
 .companyName {
   color: var(--primary-color);
+  font-weight: bold;
 }
 .companyTitle {
   color: var(--text-secondary-color);
