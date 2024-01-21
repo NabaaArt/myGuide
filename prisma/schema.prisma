@@ -10,49 +10,68 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model Company {
-  id         Int      @id @default(autoincrement())
-  companyName       String
-  companyAdress      String
-  companyTitle      String
-  companyImage      String?
-  companyEmail      String
-  category   Category @relation(fields: [categoryId], references: [id])
-  categoryId Int
-  job Job[]     
+  id            Int      @id @default(autoincrement())
+  companyName   String
+  companyAdress String
+  companyTitle  String
+  companyImage  String?
+  companyEmail  String
+  category      Category @relation(fields: [categoryId], references: [id])
+  categoryId    Int
+  job           Job[]
 }
 
 model Category {
-  id       Int       @id @default(autoincrement())
-  name     String
+  id      Int       @id @default(autoincrement())
+  name    String
   company Company[]
+  filter Filter[]
 }
 
 model User {
-  id         Int      @id @default(autoincrement())
-  userName       String
-  userPassword       String 
-  userAdress      String
-  userTitle      String
-  userImage      String?
-  userEmail      String 
-  UserType      String   @default("JobSeeker") @db.VarChar(50)
-
+  id           Int     @id @default(autoincrement())
+  userName     String
+  userPassword String
+  userAdress   String
+  userTitle    String
+  userImage    String?
+  userEmail    String
+  UserType     String  @default("JobSeeker") @db.VarChar(50)
+  filter Filter[]
   //  enum UserType {
   //   JobSeeker
   //   Recruiter
   // }
-  }
-
+}
 
 model Job {
-  id         Int      @id @default(autoincrement())
-  jobTitle       String
-  jobDescripQon       String 
-  location           String
+  id            Int    @id @default(autoincrement())
+  jobTitle      String
+  jobDescripQon String
+  location      String
+  company   Company @relation(fields: [companyId], references: [id])
+  companyId Int
+  job JobCategory[]
+}
+model JobCategory {
+  id            Int    @id @default(autoincrement())
+  cateID Int 
+   jobID    Int   
+  job      Job    @relation(fields: [jobID], references: [id])
+   
+}
 
-  company     Company @relation(fields: [companyId], references: [id])
-  companyId Int 
+
+model Filter {
+  filterID        Int       @id @default(autoincrement())
+  userID          Int
+  locaQon         String?
+  categoryID      Int
+  salaryRangeStart Float?
+  salaryRangeEnd   Float?
+
+  user            User      @relation(fields: [userID], references: [id])
+  category        Category  @relation(fields: [categoryID], references: [id])
 
 }

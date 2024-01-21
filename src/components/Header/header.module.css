@@ -61,9 +61,10 @@ position: relative;
 }
 .notiDropbtn:hover ,.link:hover{
   background-color: var(--light-primary-color);
-  border-radius: 25px;
+  border-radius: 50px;
   color: whitesmoke;
   padding: 10px;
+  margin-left: 20px;
 }
 .dropdownNotificationContent{
   display: none;

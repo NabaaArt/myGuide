@@ -1,11 +1,37 @@
+'use client';
 import styles from "./page.module.css";
 import Header from "../../components/Header/header";
+import { useState } from "react";
 
 const Singin = () => {
+  // State to manage form inputs
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    repeatPassword: "",
+    userType: "person", // Default to "person"
+  });
+
+  // Function to handle form input changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  // Function to handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Add logic to handle form submission, e.g., sending data to server or authentication
+    console.log("Form submitted with data:", formData);
+    // Add additional logic as needed, such as sending data to a server or performing authentication
+  };
+
   return (
     <div>
 <Header></Header>
-      <form>
+      <form  onSubmit={handleSubmit}>
         <div className={styles.container}>
           <h1>SIGN IN</h1>
           <h2> welcome to the website </h2>
@@ -21,6 +47,8 @@ const Singin = () => {
             placeholder="Enter your first name"
             name="firstName"
             id="firstName"
+            value={formData.firstName}
+            onChange={handleInputChange}
             required
           />
 
@@ -33,6 +61,8 @@ const Singin = () => {
             placeholder="Enter your last name"
             name="lastName"
             id="lastName"
+            value={formData.lastName}
+  onChange={handleInputChange}
             required
           />
 
@@ -45,6 +75,8 @@ const Singin = () => {
             placeholder="Enter Email"
             name="email"
             id="email"
+            value={formData.email}
+  onChange={handleInputChange}
             required
           />
 
@@ -57,6 +89,8 @@ const Singin = () => {
             placeholder="Enter Password"
             name="psw"
             id="psw"
+            value={formData.password}
+  onChange={handleInputChange}
             required
           />
 
@@ -69,6 +103,8 @@ const Singin = () => {
             placeholder="Repeat Password"
             name="psw-repeat"
             id="psw-repeat"
+            value={formData.repeatPassword}
+  onChange={handleInputChange}
             required
           />
   <label htmlFor="options">
@@ -76,7 +112,9 @@ const Singin = () => {
           </label>
           <div className={styles.dropdownContainer}>
         
-            <select id="dropdown" className={styles.dropdownInput}>
+            <select id="dropdown" className={styles.dropdownInput}
+             value={formData.userType}
+             onChange={handleInputChange}>
               <option value="person">{"Person (employee)"}</option>
               <option value="company">Company</option>
        

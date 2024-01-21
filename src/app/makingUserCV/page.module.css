@@ -1,0 +1,115 @@
+.page {
+  margin: 50px 50px;
+}
+.myInput {
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 95%;
+  margin-bottom: 12px ;
+  background-color: #eee;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+#myUL {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.title{
+  margin: 5px 0px;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+#myUL li a {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block;
+}
+
+#myUL li a:hover:not(.header) {
+  background-color: #eee;
+}
+
+.list,
+.selectedName {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block;
+}
+
+.selectedName {
+  justify-content: space-between;
+  align-items: center;
+
+  display: flex;
+}
+
+.cancelButton {
+  background-color: rgb(249, 220, 217);
+  padding: 0px 5px;
+  color: #8d0303;
+  border-radius: 8px;
+}
+
+
+
+.addBtn {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 16px;
+
+}
+
+.addBtn:hover {
+  color: var(--primary-color);
+  background-color: var(--light-primary-color);
+}
+
+.cancelButton {
+  cursor: pointer;
+  color: #ff0000;
+  font-size: 18px;
+  margin-left: 10px;
+  border-radius: 8px;
+;
+}
+
+.done{
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-top: 50px;
+}
+
+.space {
+  margin: 0px 10px;
+}
+.link{
+  color: white;
+  
+  text-decoration: none;
+  display: block;
+}

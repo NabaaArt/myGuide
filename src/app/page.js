@@ -26,7 +26,7 @@ export default function Home() {
     <Space  height={16} />
       <SearchBox/>
       <Space  height={16} />
-<InformationCard/>
+      <InformationCard/>
       <Tabs
       //  sticky={true}
         index={tab}
