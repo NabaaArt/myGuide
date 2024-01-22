@@ -2,6 +2,9 @@
 import styles from "./page.module.css";
 import Header from "../../components/Header/header";
 import { useState } from "react";
+import Space from "../../components/Space/space";
+import Link from "next/link";
+import axios from 'axios';
 
 const Singin = () => {
   // State to manage form inputs
@@ -21,11 +24,19 @@ const Singin = () => {
   };
 
   // Function to handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add logic to handle form submission, e.g., sending data to server or authentication
-    console.log("Form submitted with data:", formData);
-    // Add additional logic as needed, such as sending data to a server or performing authentication
+
+    try {
+      // Make an HTTP POST request to your server endpoint to save user data
+      const response = await axios.post('/api/save-user', formData);
+
+      // Handle the response as needed (e.g., show a success message)
+      console.log(response.data);
+    } catch (error) {
+      // Handle errors (e.g., show an error message)
+      console.error('Error saving user data:', error);
+    }
   };
 
   return (
@@ -62,7 +73,7 @@ const Singin = () => {
             name="lastName"
             id="lastName"
             value={formData.lastName}
-  onChange={handleInputChange}
+            onChange={handleInputChange}
             required
           />
 
@@ -76,7 +87,7 @@ const Singin = () => {
             name="email"
             id="email"
             value={formData.email}
-  onChange={handleInputChange}
+            onChange={handleInputChange}
             required
           />
 
@@ -87,10 +98,10 @@ const Singin = () => {
             className={styles.input}
             type="password"
             placeholder="Enter Password"
-            name="psw"
+            name="password"
             id="psw"
             value={formData.password}
-  onChange={handleInputChange}
+            onChange={handleInputChange}
             required
           />
 
@@ -101,7 +112,7 @@ const Singin = () => {
             className={styles.input}
             type="password"
             placeholder="Repeat Password"
-            name="psw-repeat"
+            name="repeatPassword"
             id="psw-repeat"
             value={formData.repeatPassword}
   onChange={handleInputChange}
@@ -128,16 +139,17 @@ const Singin = () => {
           </p>
 
           <button className={styles.signInBtn} type="submit">
-            Sign in
+            <Link className={styles.link} href="/makingUserCV" > Sign in</Link> 
           </button>
         </div>
 
         <div className={styles.signin}>
           <p>
-            Already have an account? <a href="#">Sign in</a>.
+            Already have an account? <a href="/login">Log in</a>.
           </p>
         </div>
       </form>
+     <Space height={50}></Space>
   
     </div>
   );

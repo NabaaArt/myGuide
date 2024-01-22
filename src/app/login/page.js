@@ -50,7 +50,7 @@ const Login =()=>{
       </div>
 
       <div className={styles.signin}>
-        <p>Already have an account? <a href="#">Sign in</a>.</p>
+        <p>Do not have an account?  <a href="/signin">Sign in</a>.</p>
       </div>
     </form>
 

@@ -74,8 +74,11 @@ const Header = () => {
                   <Link className={styles.dropdownContentText} href="#about">Languages</Link>
                   <Link className={styles.dropdownContentText} href="#contact">Notification</Link>
                   <Link className={styles.dropdownContentText} href='/signin'>Sign in </Link>
-                  <Link className={styles.dropdownContentText} href='/Login'>login </Link>
+                  <Link className={styles.dropdownContentText} href='/login'>login </Link>
                   <Link className={styles.dropdownContentText} href='/makingUserCV'>Make or Edit CV </Link>
+                  <Link className={styles.dropdownContentText} href='/makingCompanyProfile'>Make company profile</Link>
+                  <Link className={styles.dropdownContentText} href='/postingJobs'>posting jobs</Link>
+                
                 </div>
               </div>
             </li>

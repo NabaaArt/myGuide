@@ -73,3 +73,9 @@
   width: 100%;
   /* Add more styling as needed */
 }
+
+.link{
+  color: white; 
+  text-decoration: none;
+  display: block;
+}
