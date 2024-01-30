@@ -5,7 +5,7 @@ import AppContainer from "../../components/AppContainer/appContainer";
 import Space from "../../components/Space/space";
 import "react-datepicker/dist/react-datepicker.css";
 import Link from "next/link";
-import axios from "axios";
+
 
 const MakingCompanyProfile = () => {
     const [formData, setFormData] = useState({
@@ -32,18 +32,27 @@ const MakingCompanyProfile = () => {
           Object.entries(formData).forEach(([key, value]) => {
             formDataToSend.append(key, value);
           });
-    
+      
           // Make an HTTP POST request to your server endpoint to save company data
-          const response = await axios.post('/api/save-company', formDataToSend);
-    
-          // Handle the response as needed (e.g., show a success message)
-          console.log(response.data);
+          const response = await fetch('/api/save-company', {
+            method: 'POST',
+            body: formDataToSend,
+          });
+      
+          // Check if the response status is in the range of 200-299 for success
+          if (response.ok) {
+            const responseData = await response.json();
+            // Handle the response as needed (e.g., show a success message)
+            console.log(responseData);
+          } else {
+            // Handle errors (e.g., show an error message)
+            console.error('Error saving company data:', response.statusText);
+          }
         } catch (error) {
-          // Handle errors (e.g., show an error message)
+          // Handle other errors (e.g., network issues)
           console.error('Error saving company data:', error);
         }
       };
-
       
     return(
         <div className={styles.page}>

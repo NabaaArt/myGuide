@@ -4,7 +4,7 @@ import Header from "../../components/Header/header";
 import { useState } from "react";
 import Space from "../../components/Space/space";
 import Link from "next/link";
-import axios from 'axios';
+
 
 const Singin = () => {
   // State to manage form inputs
@@ -26,18 +26,32 @@ const Singin = () => {
   // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
       // Make an HTTP POST request to your server endpoint to save user data
-      const response = await axios.post('/api/save-user', formData);
-
-      // Handle the response as needed (e.g., show a success message)
-      console.log(response.data);
+      const response = await fetch('/api/save-user', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      // Check if the response status is in the range of 200-299 for success
+      if (response.ok) {
+        const responseData = await response.json();
+        // Handle the response as needed (e.g., show a success message)
+        console.log(responseData);
+      } else {
+        // Handle errors (e.g., show an error message)
+        console.error('Error saving user data:', response.statusText);
+      }
     } catch (error) {
-      // Handle errors (e.g., show an error message)
+      // Handle other errors (e.g., network issues)
       console.error('Error saving user data:', error);
     }
   };
+  
 
   return (
     <div>
