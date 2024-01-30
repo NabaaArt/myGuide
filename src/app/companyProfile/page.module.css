@@ -29,18 +29,11 @@
   margin: 5px 0px;
 }
 
-.companyPhoneNumber {
-  color: var(--text-secondary-color);
-}
-.companyEmail {
-  color: var(--text-secondary-color);
-}
-.companyEmail {
-  color: var(--text-secondary-color);
-}
-.companyAddress {
-  color: var(--text-secondary-color);
-}
+
+
+.companyEmail,
+.companyAddress,
+.companyPhoneNumber,
 .companyName {
   color: var(--primary-color);
   font-weight: bold;
@@ -54,4 +47,15 @@
 .companyIcons {
   color: var(--text-secondary-color);
   margin-right: 12px;
+}
+
+
+@media screen and (min-width: 768px) {
+  /* Adjust styles for tablets and larger screens */
+  .companyInfo {
+    flex-direction: row; /* Switch back to row layout for larger screens */
+  }
+  .textBlock {
+    width: 60%;
+  }
 }

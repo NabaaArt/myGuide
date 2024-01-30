@@ -5,7 +5,8 @@ import AppContainer from "../../components/AppContainer/appContainer";
 import Space from "../../components/Space/space";
 import "react-datepicker/dist/react-datepicker.css";
 import Link from "next/link";
-
+import Header from "../../components/Header/header";
+import Background from "../../components/Background/background";
 
 const MakingCompanyProfile = () => {
     const [formData, setFormData] = useState({
@@ -55,10 +56,14 @@ const MakingCompanyProfile = () => {
       };
       
     return(
+      <div>
+        <Header/> 
+        <Background>  
         <div className={styles.page}>
+       
         <AppContainer>
           <Space height={50}> </Space>
-          <h1>Ready to make your CV</h1>
+          <h1>Ready to make your company's profile?</h1>
           <Space height={30}> </Space>
        
   
@@ -84,7 +89,7 @@ const MakingCompanyProfile = () => {
             onChange={handleInputChange}
             className={styles.myInput}
           />
-  
+ 
           <Space height={50}> </Space>
   
           <h3 className={styles.title}>Enter company address</h3>
@@ -134,6 +139,8 @@ const MakingCompanyProfile = () => {
             </Link>
           </button>
         </AppContainer>
+      </div>
+      </Background>
       </div>
     )
 

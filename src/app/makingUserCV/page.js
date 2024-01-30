@@ -5,7 +5,6 @@ import AppContainer from "../../components/AppContainer/appContainer";
 import Space from "../../components/Space/space";
 import "react-datepicker/dist/react-datepicker.css";
 import Link from "next/link";
-
 import Header from "../../components/Header/header";
 import Background from "../../components/Background/background";
 
@@ -352,7 +351,7 @@ const MakingUserCV = () => {
       <AppContainer>
 
         <Space height={40}> </Space>
-        <h1>Ready to make your CV</h1>
+        <h1>Ready to make your CV?</h1>
         <Space height={30}> </Space>
 
         <h3 className={styles.title}>Enter your photo</h3>

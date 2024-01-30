@@ -5,23 +5,25 @@ import { useState, useEffect } from 'react'
 
 
 const JobCard = () => {
-    const [jobInfo, setJobInfo] = useState([]);
+    const [jobList, setJobList] = useState([]);
 
     useEffect(() => {
         fetchJobDataFromAPI()
-            .then((data) => setJobInfo(data))
-            .catch((error) => console.error('Error fetching job data:', error));
-    }, []);
-
-    const fetchJobDataFromAPI = async () => {
+          .then((data) => setJobList(data))
+          .catch((error) => console.error('Error fetching job data:', error));
+      }, []);
+    
+      const fetchJobDataFromAPI = async () => {
         const response = await fetch('http://localhost:3000/api/job');
         const data = await response.json();
-        return data.length > 0 ? data[0] : null;
-    };
+        return data;
+      };
     return (
         <div className={styles.box}>
 
-           <div class={styles.column} isPressable onPress={() => fetchJobDataFromAPI(el.id)}>
+{jobList.length > 0 ? (
+        jobList.map((jobInfo) => (
+          <div class={styles.column} isPressable onPress={() => fetchJobDataFromAPI(el.id)}>
                 <div class={styles.row}>
                     <div class={styles.card}>
                         <div className={styles.content}>
@@ -47,6 +49,10 @@ const JobCard = () => {
 
 
             </div>
+                ))
+                ) : (
+                  <p>Loading...</p>
+                )}
         </div>
     )
 }

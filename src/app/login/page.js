@@ -1,6 +1,7 @@
 'use client';
 import styles from "./page.module.css"
 import { useState } from "react"
+import Header from "../../components/Header/header";
 
 const Login =()=>{
   // Function to handle form input changes
@@ -24,6 +25,7 @@ const Login =()=>{
     return(
 
  <div >
+  <Header></Header>
     {/* inside form shoud be "action" to get data from user */}
     <form onSubmit={handleSubmit}>   
       <div className={styles.container}>

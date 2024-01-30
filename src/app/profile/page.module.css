@@ -1,3 +1,9 @@
+.page{
+  margin: 0px 50px;
+  width: 99%;
+  margin: auto; 
+}
+
 .userProfileImg {
   border-radius: 50%;
 }
@@ -14,9 +20,7 @@
   background-color: var(--light-primary-color);
   padding: 20px;
 }
-.userPhoneNumber {
-  color: var(--text-secondary-color);
-}
+.userPhoneNumber,
 .userEmail {
   color: var(--text-secondary-color);
 }
@@ -79,19 +83,10 @@
   font-weight: bold;
 }
 
-.langName {
-  color: var(--text-secondary-color);
-  margin: 8px 0px;
-}
-.education {
-  color: var(--text-secondary-color);
-  margin: 8px 0px;
-}
-.skillName {
-  color: var(--text-secondary-color);
-  margin: 8px 0px;
-}
 
+.education ,
+.langName,
+.skillName ,
 .certificationName {
   color: var(--text-secondary-color);
   margin: 8px 0px;
@@ -105,3 +100,33 @@
   font-weight: bold;
 }
  
+@media screen and (max-width: 768px) {
+  /* Adjust styles for smaller screens */
+
+  .leftcolumn,
+  .rightcolumn {
+    width: 49%;
+    padding-left: 0;
+
+  }
+  .headTitle{
+    font-size: 16px;
+  }
+
+  .row {
+    
+    margin: auto;
+  }
+  .leftcolumn{
+    margin: 5px;
+  }
+  .education ,
+.langName,
+.skillName ,
+.certificationName {
+  font-size: 16px;
+}
+.jobNameTitle{
+  font-size: 16px;
+}
+}

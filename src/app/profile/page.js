@@ -32,8 +32,11 @@ const ProfilePage = () => {
   };
 
   return (
-    <div>
+    <div >
       <Header />
+      
+        
+     
       <div className={styles.userInfoProfile}>
         <div className={styles.userTextInfo}>
           <h1 className={styles.userName}> {userData.userName} </h1>
@@ -63,8 +66,8 @@ const ProfilePage = () => {
           className={styles.userProfileImg}
         ></img>
       </div>
-      <div></div>
 
+      <div className={styles.page}>
       <div className={styles.row}>
         <div className={styles.leftcolumn}>
           <div className={styles.card}>
@@ -111,7 +114,7 @@ const ProfilePage = () => {
         </div>
       </div>
 
-   
+      </div>
     </div>
   );
 };

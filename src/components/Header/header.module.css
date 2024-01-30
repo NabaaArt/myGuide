@@ -1,83 +1,80 @@
 .header {
-    background-color: #eee;
-  }
-  
-  .header .content {
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  
-  .navBarIcons{
-    display: flex;
-    gap: 16px;
-   list-style: none;
-    align-items: center;
-  }
+  background-color: #eee;
+  justify-content: baseline;
+}
 
-  .link {
-    color:var(--text-color);
-    text-decoration: none;
-   
-  }
-.logo{
+.content {
+  height: 60px;
   display: flex;
-
+  align-items: center;
+  justify-content: space-between;
 }
-.logo h2{
-  margin-right: 10px;
+
+.navBarIcons {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+  align-items: center;
+}
+
+.link {
   color: var(--text-color);
+  text-decoration: none;
 }
-
+.logo {
+  display: flex;
+}
+.logo h3 {
+  margin-left: 30px;
+  color: var(--text-color);
+  margin-top: 2px;
+}
 
 .notiDropbtn {
-
   color: var(--primary-color);
   font-size: 18px;
-
   border: none;
   cursor: pointer;
- }
+}
 
 .dropbtn {
   color: white;
- border-radius: 8px;
+  border-radius: 8px;
   font-size: 16px;
   padding: 10px;
   border: none;
   cursor: pointer;
-  background-color: var(--primary-color)
+  background-color: var(--primary-color);
 }
 
-.dropbtn:hover, .dropbtn:focus {
-  background-color: var(--light-primary-color)
+.dropbtn:hover,
+.dropbtn:focus {
+  background-color: var(--light-primary-color);
 }
 
 .dropdown {
-position: relative;
-
+  position: relative;
 }
-.notiDropbtn:hover ,.link:hover{
+.notiDropbtn:hover,
+.link:hover {
   background-color: var(--light-primary-color);
   border-radius: 50px;
   color: whitesmoke;
   padding: 10px;
   margin-left: 20px;
 }
-.dropdownNotificationContent{
+.dropdownNotificationContent {
   display: none;
   position: absolute;
   background-color: #f1f1f1;
   border-radius: 8px;
   overflow: auto;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   width: 150px;
   padding: 14px;
 }
-.notificationInfo{
+.notificationInfo {
   padding-bottom: 10px;
   color: var(--primary-color);
   font-weight: bold;
@@ -86,9 +83,9 @@ position: relative;
   display: none;
   position: absolute;
   background-color: #f1f1f1;
-border-radius: 8px;
+  border-radius: 8px;
   overflow: auto;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -99,13 +96,16 @@ border-radius: 8px;
   display: block;
 }
 
-.dropdown a:hover {background-color: #ddd;}
+.dropdown a:hover {
+  background-color: #ddd;
+}
 
-.show {display: block;}
+.show {
+  display: block;
+}
 
 .lightLine {
   color: var(--border-color);
   border: 1px solid var(--border-color);
   margin-top: 5px;
 }
-

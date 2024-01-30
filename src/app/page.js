@@ -55,7 +55,7 @@ const getJobs = async () => {
           tabs={[
             {
               label: "Jobs",
-              content: <JobCard jobList={jobList} ></JobCard>
+              content: <JobCard></JobCard>
              
             },
             {

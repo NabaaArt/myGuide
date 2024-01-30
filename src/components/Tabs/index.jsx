@@ -43,7 +43,7 @@ export const Tabs = ({
                 i === index ? `${style.active} active` : ""
               }`}
             >
-              <p>{tab.label}</p>
+              <p className={style.label}>{tab.label}</p>
             </div>
           ))}
         </div>

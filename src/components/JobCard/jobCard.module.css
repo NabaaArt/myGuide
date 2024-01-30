@@ -2,7 +2,7 @@
   width: 75%; /* Adjust the width based on your design */
   margin: auto;
   margin-top: 16px;
-  display: flex;
+  display: block;
   justify-content: center;
   /* may it cause an styling error */
 }
@@ -97,3 +97,10 @@ color: var(--text-secondary-color);
   border: 1px solid var(--border-color);
   margin: 10px 0px;
 }
+
+/* @media screen and (max-width: 768px) {
+  .column {
+    width: 60%; 
+  }
+} 
+*/

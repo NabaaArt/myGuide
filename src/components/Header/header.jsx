@@ -65,16 +65,18 @@ const Header = () => {
         <div className={styles.content}>
           <div className={styles.logo}>
             <h2>LOGO</h2>
-            <h2>MY GUIDE</h2>
+            <h3>MY GUIDE</h3>
           </div>
 
           <ul className={styles.navBarIcons}>
             <li><Link className={styles.link} href='/'>Home</Link></li>
 
-          { userType === 'Recruiter' ? ( 
+          {/* { userType === 'Recruiter' ? ( 
+             */}
               <li><Link className={styles.link} href='/companyProfile'>< IoPersonSharp /> </Link></li>
-           ): <li><Link className={styles.link} href='/profile'>< IoPersonSharp /></Link> </li>
-          } 
+          {/*   ):  */}
+           <li><Link className={styles.link} href='/profile'>< IoPersonSharp /></Link> </li>
+         {/* }  */}
             
             <li>
               <div ref={notificationDropdownRef} className={styles.dropdown}>

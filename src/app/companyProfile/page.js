@@ -9,7 +9,7 @@ import JobCard from "../../components/JobCard/jobCard";
 import Header from "../../components/Header/header";
 import TheFooter from "../../components/Footer/footer";
 import Space from "../../components/Space/space";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const CompnyProfile = () => {
   const [companyInfo, setCompanyInfo] = useState({
@@ -21,15 +21,14 @@ const CompnyProfile = () => {
     imageUrl: "https://picsum.photos/100",
   });
   useEffect(() => {
-   // Example: Fetch additional data from an API
+    // Example: Fetch additional data from an API
     const fetchData = async () => {
       const result = await fetch("your-api-endpoint");
       const data = await result.json();
       setCompanyInfo((prevInfo) => ({ ...prevInfo, additionalData: data }));
     };
-   fetchData();
+    fetchData();
   }, []); // Dependencies array is empty to run the effect only once on mount
-
 
   return (
     <div>
@@ -38,9 +37,8 @@ const CompnyProfile = () => {
       <Background>
         <Space height={50}></Space>
         <AppContainer>
-        <div className={styles.companyInfo}>
-          <div class={styles.textBlock}>
- 
+          <div className={styles.companyInfo}>
+            <div class={styles.textBlock}>
               <h1 className={styles.companyName}>{companyInfo.name}</h1>
               <h3 className={styles.companyTitle}>{companyInfo.title}</h3>
 
@@ -48,7 +46,9 @@ const CompnyProfile = () => {
                 <div className={styles.companyIcons}>
                   <FaPhoneFlip />
                 </div>
-                <h3 className={styles.companyPhoneNumber}>{companyInfo.phoneNumber}</h3>
+                <h3 className={styles.companyPhoneNumber}>
+                  {companyInfo.phoneNumber}
+                </h3>
               </div>
               <div className={styles.alignRow}>
                 <div className={styles.companyIcons}>
@@ -62,11 +62,13 @@ const CompnyProfile = () => {
                 </div>
                 <h3 className={styles.companyAddress}>{companyInfo.address}</h3>
               </div>
-               
             </div>
-            <img className={styles.copmpanyImg} src={companyInfo.imageUrl} alt="companyImg"/>
-          
-           </div>
+            <img
+              className={styles.copmpanyImg}
+              src={companyInfo.imageUrl}
+              alt="companyImg"
+            />
+          </div>
           <JobCard></JobCard>
         </AppContainer>
       </Background>
