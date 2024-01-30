@@ -6,6 +6,8 @@ import Space from "../../components/Space/space";
 import "react-datepicker/dist/react-datepicker.css";
 import Link from "next/link";
 import axios from "axios";
+import Header from "../../components/Header/header";
+import Background from "../../components/Background/background";
 
 const MakingUserCV = () => {
   
@@ -325,9 +327,16 @@ const MakingUserCV = () => {
     }
   };
   return (
+    <div>
+      
+ 
+    <Header/>
+    <Background> 
     <div className={styles.page}>
+     
       <AppContainer>
-        <Space height={50}> </Space>
+
+        <Space height={40}> </Space>
         <h1>Ready to make your CV</h1>
         <Space height={30}> </Space>
 
@@ -343,7 +352,7 @@ const MakingUserCV = () => {
         />
 
         <Space height={50}> </Space>
-
+         
         <h3 className={styles.title}>Enter your address</h3>
         <input
           type="text"
@@ -605,7 +614,11 @@ const MakingUserCV = () => {
             Done
           </Link>
         </button>
+        
       </AppContainer>
+ 
+    </div>
+    </Background>
     </div>
   );
 };

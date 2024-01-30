@@ -57,7 +57,6 @@ const InformationCard = () => {
   return (
     <div>
       <div className={styles.slideshowContainer}>
-        {/* Slides */}
         <div className={styles.mySlidesFade}>
           <div className={styles.numberText}>1 / 3</div>
           <div className={styles.container}>
@@ -68,7 +67,10 @@ const InformationCard = () => {
 
         <div className={styles.mySlidesFade}>
           <div className={styles.numberText}>2 / 3</div>
-          <QuestionsCard />
+          <div className={styles.container}>
+            <h2 className={styles.infoText}>note</h2>
+            <h3>if you get a notification from a company you have to visit the company</h3>
+          </div>
         </div>
 
         <div className={styles.mySlidesFade}>

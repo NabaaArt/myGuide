@@ -8,7 +8,9 @@
 
  :root {
  --primary-color: rgb(26, 62, 125);
-  --primary-color-hover: #52d18b;
+  --accept: #4ca875;
+  --s: #223a42;
+  --reject:#bb4545;
   --primary-input-hover: #c6f8dc;
   --secondary-color: rgb(178, 188, 208);
   --secondary-color-hover: #3f3c3c;

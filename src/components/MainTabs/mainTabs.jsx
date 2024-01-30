@@ -14,11 +14,8 @@ const MainTabs = () => {
                 <Tab>Companies</Tab>
                 <Tab>Skills</Tab>
             </TabList>
-
             <TabPanel >
                 <div className={styles.tabContent}>
-                    
-                
                 <h2>Any content 1</h2>
                 </div>
                 <JobCard></JobCard>

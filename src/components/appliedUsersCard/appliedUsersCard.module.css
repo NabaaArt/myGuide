@@ -1,0 +1,100 @@
+.container {
+    border: 1px solid #ccc;
+    background-color: #eee;
+    padding: 16px;
+    margin: auto ;
+    width: 700px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+  
+  }
+  .container::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  .userImg {
+    float: left;
+    margin-right: 20px;
+    border-radius: 50%;
+  }
+  @media (max-width: 500px) {
+    .container {
+        text-align: center;
+    }
+    .container img {
+        margin: auto;
+        float: none;
+        display: block;
+    }
+  }
+  .arrow{
+ 
+  margin: 8px;
+
+  color: var(--text-secondary-color);
+  }
+  .userInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .userName {
+    color: var(--primary-color);
+    font-weight: bold;
+  }
+  .link{
+    text-decoration: none;
+    color: black;
+  }
+  .acceptButton {
+    background-color: var( --accept);
+    border: none;
+    color: #eee;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    border-radius: 16px;
+
+    margin-bottom: 10px;
+    margin-right: 10px;
+  }
+
+
+  .rejectButton {
+    background-color: var(--reject);
+    border: none;
+    color: #eee;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+font-weight: 600;
+font-size: 13px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+  }
+
+  .buttons{
+    display: flex;
+    flex-flow: row-reverse;
+    justify-content: end;
+  }
+
+  .rejectButton:hover{
+    background-color: #bb454568;
+    color: var(--reject);
+  }
+
+  .acceptButton:hover{
+    background-color: #4ca87556;
+ color: var(--accept);
+}

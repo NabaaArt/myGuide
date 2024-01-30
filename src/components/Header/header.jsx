@@ -9,6 +9,7 @@ import { IoNotifications } from "react-icons/io5";
 const Header = () => {
   const [showNotificationDropdown, setShowNotificationDropdown] = useState(false);
   const [showSettingsDropdown, setShowSettingsDropdown] = useState(false);
+  const [userType, setUserType] = useState(null);
 
   const notificationDropdownRef = useRef(null);
   const settingsDropdownRef = useRef(null);
@@ -34,6 +35,22 @@ const Header = () => {
       setShowSettingsDropdown(false);
     }
   };
+ useEffect(() => {
+    const fetchUserType = async () => {
+      try {
+        // Replace this with your actual API endpoint for fetching user type
+        const response = await fetch('/api/getUserType');
+        const data = await response.json();
+        
+        // Assuming your API response has a 'userType' property
+        setUserType(data.userType);
+      } catch (error) {
+        console.error('Error fetching user type:', error);
+      }
+    };
+
+    fetchUserType();
+  }, []);
 
   useEffect(() => {
     window.addEventListener('click', closeDropdowns);
@@ -53,15 +70,18 @@ const Header = () => {
 
           <ul className={styles.navBarIcons}>
             <li><Link className={styles.link} href='/'>Home</Link></li>
-            <li><Link className={styles.link} href='/companyProfile'>company </Link></li>
-            <li><Link className={styles.link} href='/profile'>< IoPersonSharp /></Link> </li>
 
+          { userType === 'Recruiter' ? ( 
+              <li><Link className={styles.link} href='/companyProfile'>< IoPersonSharp /> </Link></li>
+           ): <li><Link className={styles.link} href='/profile'>< IoPersonSharp /></Link> </li>
+          } 
+            
             <li>
               <div ref={notificationDropdownRef} className={styles.dropdown}>
                 <div onClick={toggleNotificationDropdown} className={styles.notiDropbtn}> <IoNotifications /></div>
                 <div id="notificationDropdown" className={`${styles.dropdownNotificationContent} ${showNotificationDropdown ? styles.show : ''}`}>
                   <h4 className={styles.notificationInfo}>you got an offer from company ...</h4>
-                  <h5>see details</h5>
+                  <h5>please visit our company</h5>
                   <hr className={styles.lightLine} />
                 </div>
               </div>
@@ -72,13 +92,17 @@ const Header = () => {
                 <div id="settingsDropdown" className={`${styles.dropdownSettingsContent} ${showSettingsDropdown ? styles.show : ''}`}>
                   <Link className={styles.dropdownContentText} href="/">Home</Link>
                   <Link className={styles.dropdownContentText} href="#about">Languages</Link>
-                  <Link className={styles.dropdownContentText} href="#contact">Notification</Link>
                   <Link className={styles.dropdownContentText} href='/signin'>Sign in </Link>
                   <Link className={styles.dropdownContentText} href='/login'>login </Link>
                   <Link className={styles.dropdownContentText} href='/makingUserCV'>Make or Edit CV </Link>
-                  <Link className={styles.dropdownContentText} href='/makingCompanyProfile'>Make company profile</Link>
-                  <Link className={styles.dropdownContentText} href='/postingJobs'>posting jobs</Link>
+                  {/* {userType === 'Recruiter' && ( */}
                 
+              <Link className={styles.dropdownContentText} href='/makingCompanyProfile'>Make company profile</Link>
+               
+                 {/* )} */}
+
+                  <Link className={styles.dropdownContentText} href='/postingJobs'>posting jobs</Link>
+
                 </div>
               </div>
             </li>

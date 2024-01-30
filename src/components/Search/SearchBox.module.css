@@ -7,7 +7,6 @@
     overflow: hidden;
     padding-left: 16px;
     height: 48px;
-
     align-items: center;
     justify-content: center;
     background: var( --background-color);
@@ -17,6 +16,7 @@
   
   .button:hover{
     background: #ccc;
+    border-radius: 20px;
   }
   .input{
   
