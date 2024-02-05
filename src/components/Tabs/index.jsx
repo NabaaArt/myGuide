@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import style from "./style.module.css";
 
@@ -49,8 +48,9 @@ export const Tabs = ({
         </div>
         {actions}
       </div>
-
+       
       <div className={style.tabsBody}>{tabs[index]?.content}</div>
+    
     </div>
   );
 };

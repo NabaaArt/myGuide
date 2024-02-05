@@ -1,6 +1,6 @@
 .container {
     border: 1px solid #ccc;
-    background-color: #eee;
+    background-color: var(--background-color);
     padding: 16px;
     margin: auto ;
     width: 75%;
@@ -48,3 +48,46 @@
     color: var(--primary-color);
     font-weight: bold;
   }
+
+
+
+@media only screen and (max-width: 768px) {
+  .companyName {
+    font-size: 16px;
+  }
+  .companyAddress{
+    font-size: 12px;
+  }
+  .companyImg {
+    border-radius: 50%;
+    height: 70px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .companyName {
+    font-size: 15px;
+  }
+  .companyAddress{
+    font-size: 12px;
+  }
+  .companyImg {
+    border-radius: 50%;
+    height: 66px;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .companyName {
+    font-size: 13px;
+  }
+  .companyAddress{
+    font-size: 11px;
+  }
+  .companyImg {
+    border-radius: 50%;
+    height: 63px;
+  }
+}
+
+

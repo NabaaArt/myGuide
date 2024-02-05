@@ -1,49 +1,46 @@
 .tabs {
-
   margin: 16px;
- 
 }
 
-.tabs .tabsHead {
-  width:90%;
+.tabsHead {
+  width: 80%;
   display: flex;
   margin: auto;
   align-items: center;
-  justify-content: center;
   border-bottom: 1px solid var(--border-color);
-  padding: 3px 8px;
+  justify-content: center;
   height: 54px;
   background-color: var(--bk-color);
   z-index: 99;
-  transition: .3s;
+  transition: 0.3s;
   border-radius: 8px;
-
+  padding-right: 15%;
 }
 
-.tablist{
+.tablist {
   display: inline-flex;
   gap: 16px;
   align-items: center;
+
   position: relative;
 }
 
-.label{
+.label {
   color: var(--text-secondary-color);
   font-size: 13px;
   font-weight: bold;
-  
 }
-.label:hover{
-background-color: var(--light-primary-color);
-border-radius: 25px;
-color: whitesmoke;
-padding: 7px;
+.label:hover {
+  background-color: var(--light-primary-color);
+  border-radius: 25px;
+  color: whitesmoke;
+  padding: 7px;
 }
 .active .label {
-background-color: var(--primary-color);
-border-radius: 25px;
-color: whitesmoke;
-padding: 7px;
+  background-color: var(--primary-color);
+  border-radius: 25px;
+  color: whitesmoke;
+  padding: 7px;
 }
 
 .active {
@@ -57,25 +54,22 @@ padding: 7px;
   cursor: pointer;
 }
 
-/* .tabs .tabsHead .tablist .active::after {
-  content: " ";
-  height: 2px;
-  width: 100%;
-  background-color: var(--text-color);
-  position: absolute;
-  bottom: -15px;
-  transition: 0.3s;
-} */
-/* 
-.tabs .tablist .line {
-  position: absolute;
-  width: 800px;
-  height: 2px;
-  background-color: rgb(26, 62, 125);
-  bottom: -18.5px;
-  transition: 0.3s;
-} */
-
 .tabsBody {
   margin-top: 16px;
+}
+@media screen and (max-width: 600px) {
+  .label {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 300px) {
+  .label {
+    font-size: 9px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .label {
+    font-size: 15px; /* Adjust font size for larger screens */
+  }
 }

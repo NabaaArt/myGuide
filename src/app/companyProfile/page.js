@@ -69,6 +69,7 @@ const CompnyProfile = () => {
               alt="companyImg"
             />
           </div>
+          <Space height={26}></Space>
           <JobCard></JobCard>
         </AppContainer>
       </Background>

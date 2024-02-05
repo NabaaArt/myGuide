@@ -2,26 +2,45 @@
 import styles from "./page.module.css"
 import { useState } from "react"
 import Header from "../../components/Header/header";
+import Router from 'next/router';
 
 const Login =()=>{
-  // Function to handle form input changes
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
-
-  // Function to handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Add logic to handle form submission, e.g., sending data to server or authentication
-    console.log("Form submitted with data:", formData);
-  };
-
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        
+        const userData = await response.json();
+        console.log('Login successful:', userData);
+        Router.push("/");
+      } else {
+        console.error('Login failed:', response.status, response.statusText);
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+    }
+  };
     return(
 
  <div >
@@ -40,15 +59,15 @@ const Login =()=>{
         onChange={handleInputChange}
         required />
 
-        <label htmlFor="psw"><b>Password</b></label>
-        <input className ={styles.input}  type="password" placeholder="Enter Password" name="psw" id="psw"
+        <label htmlFor="password"><b>Password</b></label>
+        <input className ={styles.input}  type="password" placeholder="Enter Password" name="password" id="psw"
          value={formData.password}
          onChange={handleInputChange} required />
 
        <hr className={styles.hr}/>
-        <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+        <p>By creating an account you agree to our <a href="#">Terms & Privacy</a></p>
 
-        <button className={styles.logInBtn} type="submit"  >Log in</button>
+        <button className={styles.logInBtn} type="submit">Log in</button>
       </div>
 
       <div className={styles.signin}>

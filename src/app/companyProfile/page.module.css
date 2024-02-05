@@ -1,26 +1,25 @@
 .container {
   position: relative;
   font-family: Arial;
-  
+
 }
-.copmpanyImg{
+.copmpanyImg {
   border-radius: 50%;
- height: 150px;
+  height: 150px;
 }
-.companyInfo{
+.companyInfo {
   display: flex;
   width: 90%;
-  margin:auto;
+  margin: auto;
   padding: 20px;
   border-radius: 8px;
   border: 1px solid #ccc;
   background-color: #eef3fe;
   align-items: center;
-
+  justify-content: space-between;
 }
 .textBlock {
   width: 100%;
-   
 }
 .alignRow {
   display: flex;
@@ -28,8 +27,6 @@
   color: var(--text-secondary-color);
   margin: 5px 0px;
 }
-
-
 
 .companyEmail,
 .companyAddress,
@@ -49,7 +46,6 @@
   margin-right: 12px;
 }
 
-
 @media screen and (min-width: 768px) {
   /* Adjust styles for tablets and larger screens */
   .companyInfo {
@@ -57,5 +53,48 @@
   }
   .textBlock {
     width: 60%;
+  }
+}
+
+
+@media only screen and (max-width: 768px) {
+  .companyName,
+  .companyAddress,
+  .companyTitle,
+  .companyEmail,
+  .companyPhoneNumber {
+    font-size: 18px;
+  }
+  .copmpanyImg {
+    border-radius: 50%;
+    height: 120px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .companyName,
+  .companyAddress,
+  .companyTitle,
+  .companyEmail,
+  .companyPhoneNumber {
+    font-size: 16px;
+  }
+  .copmpanyImg {
+    border-radius: 50%;
+    height: 100px;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .companyName,
+  .companyAddress,
+  .companyTitle,
+  .companyEmail,
+  .companyPhoneNumber {
+    font-size: 14px;
+  }
+  .copmpanyImg {
+    border-radius: 50%;
+    height: 90px;
   }
 }

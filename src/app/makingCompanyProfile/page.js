@@ -33,24 +33,23 @@ const MakingCompanyProfile = () => {
           Object.entries(formData).forEach(([key, value]) => {
             formDataToSend.append(key, value);
           });
-      
+    
           // Make an HTTP POST request to your server endpoint to save company data
           const response = await fetch('/api/save-company', {
             method: 'POST',
             body: formDataToSend,
           });
-      
+    
           // Check if the response status is in the range of 200-299 for success
           if (response.ok) {
             const responseData = await response.json();
-            // Handle the response as needed (e.g., show a success message)
+            Router.push("/companyProfile");
+       
             console.log(responseData);
           } else {
-            // Handle errors (e.g., show an error message)
             console.error('Error saving company data:', response.statusText);
           }
         } catch (error) {
-          // Handle other errors (e.g., network issues)
           console.error('Error saving company data:', error);
         }
       };

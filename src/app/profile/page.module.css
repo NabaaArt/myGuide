@@ -1,14 +1,12 @@
-.page{
-  margin: 0px 50px;
+.page {
+  margin: auto;
   width: 99%;
-  margin: auto; 
 }
 
 .userProfileImg {
   border-radius: 50%;
 }
 .alignRow {
-
   display: flex;
   align-items: flex-end;
   color: var(--text-secondary-color);
@@ -17,6 +15,7 @@
 .userInfoProfile {
   display: flex;
   justify-content: space-around;
+
   background-color: var(--light-primary-color);
   padding: 20px;
 }
@@ -29,6 +28,7 @@
 }
 .userJobTitle {
   margin-bottom: 20px;
+  margin-top: 5px;
 }
 
 .userIcons {
@@ -83,10 +83,9 @@
   font-weight: bold;
 }
 
-
-.education ,
+.education,
 .langName,
-.skillName ,
+.skillName,
 .certificationName {
   color: var(--text-secondary-color);
   margin: 8px 0px;
@@ -96,37 +95,94 @@
   color: var(--border-color);
   border: 1px solid var(--border-color);
 }
-.userName{
+.userName {
   font-weight: bold;
 }
- 
-@media screen and (max-width: 768px) {
-  /* Adjust styles for smaller screens */
 
+@media only screen and (max-width: 768px) {
+  .userEmail,
+  .userPhoneNumber,
+  .userJobTitle,
+  .userAddress {
+    font-size: 18px;
+  }
+  .userIcons {
+    font-size: 14px;
+  }
+  .userName {
+    font-size: 22px;
+  }
+  .userProfileImg {
+    border-radius: 50%;
+    height: 120px;
+  }
   .leftcolumn,
   .rightcolumn {
     width: 49%;
     padding-left: 0;
-
   }
-  .headTitle{
+  .headTitle {
     font-size: 16px;
   }
 
   .row {
-    
     margin: auto;
   }
-  .leftcolumn{
+  .leftcolumn {
     margin: 5px;
   }
-  .education ,
-.langName,
-.skillName ,
-.certificationName {
-  font-size: 16px;
+  .education,
+  .langName,
+  .skillName,
+  .certificationName {
+    font-size: 16px;
+  }
+  .jobNameTitle {
+    font-size: 16px;
+  }
+  .userInfoProfile {
+    justify-content: space-between;
+  }
 }
-.jobNameTitle{
-  font-size: 16px;
+
+@media only screen and (max-width: 576px) {
+  .userEmail,
+  .userJobTitle,
+  .userPhoneNumber,
+  .userAddress {
+    font-size: 16px;
+  }
+  .userIcons {
+    font-size: 12px;
+  }
+  .userName {
+    font-size: 20px;
+  }
+  .userProfileImg {
+    border-radius: 50%;
+    height: 100px;
+  }
+
+  .userInfoProfile {
+    justify-content: space-between;
+  }
 }
+
+@media only screen and (max-width: 300px) {
+  .userEmail,
+  .userJobTitle,
+  .userPhoneNumber,
+  .userAddress {
+    font-size: 14px;
+  }
+  .userName {
+    font-size: 19px;
+  }
+  .userProfileImg {
+    border-radius: 50%;
+    height: 90px;
+  }
+  .userInfoProfile {
+    justify-content: space-between;
+  }
 }

@@ -2,8 +2,33 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export async function GET(req) {
-  let jobs = await prisma.job.findMany();
-  return Response.json(jobs);
+  try {
+    let jobs = await prisma.job.findMany({
+      include: {
+        company: {
+          select: {
+            companyName: true,
+            companyAddress: true,
+          },
+        },
+      },
+    });
+
+    // Fetch company data for each job
+    // const jobsWithCompanyData = await Promise.all(
+    //   jobs.map(async (job) => {
+    //     job.companyData = await getCompanyDataFromJob(job.id);
+    //     return job;
+    //   })
+    // );
+
+    return Response.json(jobs);
+  } catch (error) {
+    return Response.json({
+      success: false,
+      error,
+    });
+  }
 }
 
 export async function POST(req) {
@@ -23,3 +48,32 @@ export async function POST(req) {
     });
   }
 }
+
+async function getCompanyDataFromJob(jobId) {
+  try {
+    const jobWithCompany = await prisma.job.findUnique({
+      where: {
+        id: jobId,
+      },
+      include: {
+        company: true,
+      },
+    });
+
+    if (!jobWithCompany) {
+      console.log(`Job with ID ${jobId} not found.`);
+      return null;
+    }
+
+    const companyData = jobWithCompany.company;
+    console.log("Company Data:", companyData);
+    return companyData;
+  } catch (error) {
+    console.error("Error fetching company data:", error);
+    return null;
+  }
+}
+
+// // Usage example
+// const jobIdToFetch = 1; // Replace with the actual job ID
+// getCompanyDataFromJob(jobIdToFetch);

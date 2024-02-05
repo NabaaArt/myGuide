@@ -1,15 +1,15 @@
 .box {
-  width: 75%; /* Adjust the width based on your design */
+  width: 60%;
   margin: auto;
-  margin-top: 16px;
   display: block;
   justify-content: center;
-  /* may it cause an styling error */
+ 
 }
 .column {
   float: left;
-  width: 700px;
-  padding: 0 10px;
+  width: 100%;
+  margin-bottom: 16px;
+  
 }
 
 .row {
@@ -32,12 +32,11 @@
   }
 }
 
-/* Style the counter cards */
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 16px;
   text-align: start;
-  background-color: var( --background-color);
+  background-color: var(--background-color);
   border-radius: 8px;
   margin-bottom: 10px;
   position: relative;
@@ -54,9 +53,6 @@
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 16px;
-  /* position: absolute;
-  bottom: 0;
-  right: 0; */
   margin-bottom: 10px;
   margin-right: 10px;
 }
@@ -82,25 +78,61 @@
   flex-flow: row-reverse;
   justify-content: space-between;
 }
-.jobTitle{
+.jobTitle {
   font-weight: bold;
 }
-.companyAddress{
-  
+.companyAddress {
   margin: 10px 0px;
-color: var(--text-secondary-color);
-
+  color: var(--text-secondary-color);
 }
 
 .lightLine {
   color: var(--border-color);
-  border: 1px solid var(--border-color);
+  border: 0.5px solid var(--border-color);
   margin: 10px 0px;
 }
 
-/* @media screen and (max-width: 768px) {
-  .column {
-    width: 60%; 
+@media only screen and (max-width: 768px) {
+  .companyName {
+    font-size: 16px;
   }
-} 
-*/
+  .companyAddress {
+    font-size: 12px;
+  }
+  .jobTitle {
+    font-size: 16px;
+  }
+  .jobDescribtions {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .companyName {
+    font-size: 15px;
+  }
+  .companyAddress {
+    font-size: 12px;
+  }
+  .jobTitle {
+    font-size: 13px;
+  }
+  .jobDescribtions {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .companyName {
+    font-size: 13px;
+  }
+  .companyAddress {
+    font-size: 11px;
+  }
+  .jobTitle {
+    font-size: 12px;
+  }
+  .jobDescribtions {
+    font-size: 13px;
+  }
+}

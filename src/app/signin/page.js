@@ -7,10 +7,11 @@ import Link from "next/link";
 
 
 const Singin = () => {
+  
   // State to manage form inputs
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+   fullName: "",
+ 
     email: "",
     password: "",
     repeatPassword: "",
@@ -23,10 +24,9 @@ const Singin = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
       // Make an HTTP POST request to your server endpoint to save user data
       const response = await fetch('/api/save-user', {
@@ -36,7 +36,7 @@ const Singin = () => {
         },
         body: JSON.stringify(formData),
       });
-  
+
       // Check if the response status is in the range of 200-299 for success
       if (response.ok) {
         const responseData = await response.json();
@@ -51,6 +51,7 @@ const Singin = () => {
       console.error('Error saving user data:', error);
     }
   };
+
   
 
   return (
@@ -64,32 +65,20 @@ const Singin = () => {
           <hr className={styles.hr} />
 
           <label htmlFor="firstName">
-            <b>First Name</b>
+            <b>Full Name</b>
           </label>
           <input
             className={styles.input}
             type="text"
-            placeholder="Enter your first name"
-            name="firstName"
-            id="firstName"
-            value={formData.firstName}
+            placeholder="Enter your full name"
+            name="fullName"
+            id="fullName"
+            value={formData.fullName}
             onChange={handleInputChange}
             required
           />
 
-          <label htmlFor="lastName">
-            <b>Last Name</b>
-          </label>
-          <input
-            className={styles.input}
-            type="text"
-            placeholder="Enter your last name"
-            name="lastName"
-            id="lastName"
-            value={formData.lastName}
-            onChange={handleInputChange}
-            required
-          />
+        
 
           <label htmlFor="email">
             <b>Email</b>

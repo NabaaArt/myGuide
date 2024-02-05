@@ -1,6 +1,6 @@
 .container {
     border: 1px solid #ccc;
-    background-color: #eee;
+    background-color: var(--background-color);
     padding: 16px;
     margin: auto ;
     width: 75%;
@@ -97,4 +97,47 @@ font-size: 13px;
   .acceptButton:hover{
     background-color: #4ca87556;
  color: var(--accept);
+}
+
+@media only screen and (max-width: 768px) {
+  .userName{
+    font-size: 16px;
+  }
+ 
+  .userImg {
+    border-radius: 50%;
+    height: 70px;
+  }
+  .userTitle{
+    font-size: 15px;
+  }
+
+
+}
+
+@media only screen and (max-width: 576px) {
+  .userName{
+    font-size: 15px;
+  }
+  .userTitle{
+    font-size: 14px;
+
+  }
+  .userImg {
+    border-radius: 50%;
+    height: 66px;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .userName{
+    font-size: 13px;
+  }
+  .userTitle{
+    font-size: 13px;
+  }
+  .userImg {
+    border-radius: 50%;
+    height: 63px;
+  }
 }

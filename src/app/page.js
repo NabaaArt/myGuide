@@ -15,37 +15,43 @@ import QuestionsCard from "../components/QuestionsCard/guestionsCard";
 import InformationCard from "../components/informationCard/informationCard";
 import UserCard from "../components/userCard/userCard";
 import AppliedUserCard from "../components/appliedUsersCard/appliedUsersCard";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
 
 export default function Home() {
   const [tab, setTab] = useState(0);
- const [job , setJob]= useState([]);
- const [jobList, setJobList] = useState([]);
+  const queryClient = new QueryClient()
+//  const [job , setJob]= useState([]);
+//  const [jobList, setJobList] = useState([]);
 
-const getJobs = async () => {
-    let url = "http://localhost:3000/api/job";
+// const getJobs = async () => {
+//     let url = "http://localhost:3000/api/job";
 
-    try {
-      let res = await fetch(url);
-      let jsonData = await res.json();
-      setJobList(jsonData);
-    } catch (error) {
-      console.error("Error fetching job data:", error);
-    }
-  };
+//     try {
+//       let res = await fetch(url);
+//       let jsonData = await res.json();
+//       setJobList(jsonData);
+//     } catch (error) {
+//       console.error("Error fetching job data:", error);
+//     }
+//   };
 
-  useEffect(() => {
-  getJobs()
-  }, []);
+//   useEffect(() => {
+//   getJobs()
+//   }, []);
   
   return (
     <div>
       <Header />
       <Background>
+        <QueryClientProvider client={queryClient}> 
         <Space height={16} />
         <SearchBox />
-        <Space height={16} />
+        <Space height={26} />
         <InformationCard />
-        <Tabs
+      
+   
+        <Tabs 
           //  sticky={true}
           index={tab}
           onTab={(val) => setTab(val)}
@@ -55,12 +61,12 @@ const getJobs = async () => {
           tabs={[
             {
               label: "Jobs",
-              content: <JobCard></JobCard>
+              content: <JobCard></JobCard>    
              
             },
             {
               label: "Companies",
-              content: <CompanyCard   ></CompanyCard>,
+              content: <CompanyCard></CompanyCard>,
             },
             {
               label: "Information",
@@ -72,16 +78,14 @@ const getJobs = async () => {
              
             },
             {
-              label: "applied users",
+              label: "applied",
               content: <AppliedUserCard></AppliedUserCard>
-             
-            }
+            },          
           ]}
-        />
-        <Space height={26} />
+        ></Tabs> 
+        </QueryClientProvider>        
       </Background>
-
-      <TheFooter />
+      <TheFooter /> 
     </div>
   );
 }

@@ -61,7 +61,7 @@ const InformationCard = () => {
           <div className={styles.numberText}>1 / 3</div>
           <div className={styles.container}>
             <h2 className={styles.infoText}>check the information tap be</h2>
-            <h3>it will help you find out every feild and tell you all the information about it </h3>
+            <h3 className={styles.infoDescription}>it will help you find out every feild and tell you all the information about it </h3>
           </div>
         </div>
 
@@ -77,10 +77,8 @@ const InformationCard = () => {
           <div className={styles.numberText}>3 / 3</div>
           <QuestionsCard />
         </div>
-
-        {/* Previous and Next buttons */}
         <a className={styles.prev} onClick={() => plusSlides(-1)}>
-          ❮
+          ❮  
         </a>
         <a className={styles.next} onClick={() => plusSlides(1)}>
           ❯

@@ -1,6 +1,6 @@
 .container {
   border: 1px solid #ccc;
-  background-color: #eee;
+  background-color: var(--background-color);
   padding: 16px;
   margin: auto;
   width: 75%;
@@ -28,4 +28,25 @@
 .question {
   color: var(--primary-color);
   font-weight: bold;
+}
+
+@media only screen and (max-width: 768px) {
+  .question,
+  .answer {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .question,
+  .answer {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .question,
+  .answer {
+    font-size: 13px;
+  }
 }

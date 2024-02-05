@@ -7,6 +7,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Job {
+  id             Int            @id @default(autoincrement())
+  jobTitle       String
+  jobDescription String
+  companyId      Int
+  categoryId     Int
+  category       Category       @relation(fields: [categoryId], references: [id])
+  company        Company        @relation(fields: [companyId], references: [id])
+  notifications  Notification[]
+}
+
 model Company {
   id             Int            @id @default(autoincrement())
   companyName    String
@@ -15,65 +26,16 @@ model Company {
   companyImage   String?
   companyEmail   String
   companyNumber  String
+  companyType    String
   categoryId     Int
-  category       Category       @relation(fields: [categoryId], references: [id])
+  jobs           Job[]
   notifications  Notification[]
 }
 
 model Category {
-  id      Int       @id @default(autoincrement())
-  name    String
-  company Company[]
-  filter  Filter[]
-}
-
-model User {
-  id                    Int            @id @default(autoincrement())
-  userName              String
-  userPassword          String
-  userAddress           String
-  userTitle             String
-  userImage             String?
-  userEmail             String
-  userNumber            String
-  userType              UserType       @default(JobSeeker)
-  filters               Filter[]
-  notificationsReceived Notification[] @relation("recipient")
-  notificationsSent     Notification[] @relation("sender")
-}
-
-model Job {
-  id             Int            @id @default(autoincrement())
-  jobTitle       String
-  jobDescription String
-  location       String
-  jobCategories  JobCategory[]
-  notifications  Notification[]
-}
-
-model JobCategory {
-  id     Int @id @default(autoincrement())
-  cateID Int
-  jobID  Int
-  job    Job @relation(fields: [jobID], references: [id])
-}
-
-model Filter {
-  filterID   Int       @id @default(autoincrement())
-  userID     Int
-  location   String?
-  categoryID Int
-  questionID Int
-  category   Category  @relation(fields: [categoryID], references: [id])
-  questions  Questions @relation(fields: [questionID], references: [id])
-  user       User      @relation(fields: [userID], references: [id])
-}
-
-model Questions {
-  id       Int      @id @default(autoincrement())
-  question String
-  answer   String
-  filter   Filter[]
+  id   Int    @id @default(autoincrement())
+  name String
+  job  Job[]
 }
 
 model Notification {
@@ -86,6 +48,26 @@ model Notification {
   job         Job     @relation(fields: [jobId], references: [id])
   recipient   User    @relation("recipient", fields: [recipientId], references: [id])
   sender      User    @relation("sender", fields: [senderId], references: [id])
+}
+
+model User {
+  id                    Int            @id @default(autoincrement())
+  userName              String
+  userPassword          String
+  userAddress           String
+  userTitle             String
+  userImage             String?
+  userEmail             String
+  userNumber            String
+  userType              UserType       @default(JobSeeker)
+  notificationsReceived Notification[] @relation("recipient")
+  notificationsSent     Notification[] @relation("sender")
+}
+
+model Questions {
+  id       Int    @id @default(autoincrement())
+  question String
+  answer   String
 }
 
 enum UserType {
