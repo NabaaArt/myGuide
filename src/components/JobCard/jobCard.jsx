@@ -17,8 +17,12 @@ const JobCard = () => {
     },
   });
 
-  const isError = !!error;
 
+  const isError = !!error;
+const handleApply = ()=>{
+  alert("you have been applied to this job successfully, wait to get a notification from the company , good luck");
+    
+}
   return (
     <div className={styles.box}>
       {isLoading ? (
@@ -39,8 +43,8 @@ const JobCard = () => {
                 </div>
                 <hr className={styles.lightLine} />
                 <p className={styles.jobDescribtions}>{job?.jobDescription}</p>
-                <div className={styles.applyButtonContainer}>
-                  <button className={styles.applyButton}>Apply now</button>
+                <div className={styles.applyButtonContainer} >
+                  <button onClick = {handleApply} className={styles.applyButton}>Apply now</button>
                 </div>
               </div>
             </div>

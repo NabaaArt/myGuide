@@ -32,6 +32,7 @@ const postingJob = () => {
 
       const responseData = await response.json();
       console.log("Job posted successfully:", responseData);
+      alert("Job posted successfully");
       Router.push("/companyProfile");
     } catch (error) {
       console.error("Error posting job:", error);

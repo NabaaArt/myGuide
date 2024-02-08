@@ -7,7 +7,7 @@
   border-radius: 50%;
   height: 150px;
 }
-.companyInfo {
+.companyInformation {
   display: flex;
   width: 90%;
   margin: auto;
@@ -48,7 +48,7 @@
 
 @media screen and (min-width: 768px) {
   /* Adjust styles for tablets and larger screens */
-  .companyInfo {
+  .companyInformation {
     flex-direction: row; /* Switch back to row layout for larger screens */
   }
   .textBlock {

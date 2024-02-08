@@ -1,6 +1,5 @@
 "use client";
 import styles from "./page.module.css";
-import Header from "../components/Header/header";
 import AppContainer from "../components/AppContainer/appContainer";
 import SearchBox from "../components/Search/SearchBox";
 import Background from "../components/Background/background";
@@ -42,7 +41,7 @@ export default function Home() {
   
   return (
     <div>
-      <Header />
+   
       <Background>
         <QueryClientProvider client={queryClient}> 
         <Space height={16} />

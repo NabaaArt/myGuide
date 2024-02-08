@@ -14,14 +14,7 @@ export async function GET(req) {
       },
     });
 
-    // Fetch company data for each job
-    // const jobsWithCompanyData = await Promise.all(
-    //   jobs.map(async (job) => {
-    //     job.companyData = await getCompanyDataFromJob(job.id);
-    //     return job;
-    //   })
-    // );
-
+   
     return Response.json(jobs);
   } catch (error) {
     return Response.json({
@@ -73,7 +66,3 @@ async function getCompanyDataFromJob(jobId) {
     return null;
   }
 }
-
-// // Usage example
-// const jobIdToFetch = 1; // Replace with the actual job ID
-// getCompanyDataFromJob(jobIdToFetch);

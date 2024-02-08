@@ -24,18 +24,17 @@ const AppliedUserCard = () => {
 
 
   const handleAccept = () => {
-    // Send accept notification
+
     sendNotification('Accepted', 'Your job application has been accepted.');
   };
   const handleReject = () => {
-    // Send reject notification
+
     sendNotification('Rejected', 'Your job application has been rejected.');
   };
 
   const sendNotification = async (type, message, recipientId) => {
     try {
-      // Replace the following with your actual API endpoint to send a notification
-      const response = await fetch('/api/sendNotification', {
+      const response = await fetch('/api/notification', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -51,15 +50,13 @@ const AppliedUserCard = () => {
 
         console.log('Notification sent successfully');
 
-        // For demonstration purposes, we'll simulate navigating to the notification page after a delay
         setTimeout(() => {
-          // Navigate to the notification page with the appropriate message and type
           router.push(`/notifications?type=${type}&message=${encodeURIComponent(message)}`);
         }, 1000); // Simulating a delay of 1 second (adjust as needed)
       } else {
-        // Handle the case where the notification failed to send
+
         console.error('Failed to send notification');
-        // You might want to display an error message to the user or retry the notification
+        alert("faild to send notification,please send it again")
       }
     } catch (error) {
       console.error('Error sending notification:', error);
@@ -67,7 +64,6 @@ const AppliedUserCard = () => {
   };
 
   return (<div>
-
     {isLoading ? (
       <p>Loading...</p>
     ) : isError ? (
@@ -92,7 +88,7 @@ const AppliedUserCard = () => {
           </div>
 
         </div>
-        ))
+      ))
     ) : (
       <h2>there are no applied Users</h2>
     )}

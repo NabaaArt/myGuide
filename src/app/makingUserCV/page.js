@@ -5,14 +5,13 @@ import AppContainer from "../../components/AppContainer/appContainer";
 import Space from "../../components/Space/space";
 import "react-datepicker/dist/react-datepicker.css";
 import Link from "next/link";
-import Header from "../../components/Header/header";
 import Background from "../../components/Background/background";
+import axios from "axios";
 
 const MakingUserCV = () => {
   
   const saveDataToDatabase = async () => {
     try {
-      // Construct the request body with the data you want to save
       const requestBody = {
         skills: selectedSkills,
         languages: selectedLanguages,
@@ -24,27 +23,19 @@ const MakingUserCV = () => {
         phoneNumber: formData.phoneNumber,
       };
   
-      // Make an HTTP POST request to your server endpoint to save data
-      const response = await fetch("/api/save-cv-data", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(requestBody),
-      });
-  
-      // Check if the response status is in the range of 200-299 for success
-      if (response.ok) {
-        const responseData = await response.json();
-        // Handle the response as needed (e.g., show a success message)
+      const response = await axios.post('/api/user/', requestBody);
+
+      if (response.status === 201) {
+        const responseData = response.data;
         console.log(responseData);
+    
       } else {
-        // Handle errors (e.g., show an error message)
-        console.error("Error saving data:", response.statusText);
+        console.error('Error saving data:', response.statusText);
+   
       }
     } catch (error) {
-      // Handle other errors (e.g., network issues)
-      console.error("Error saving data:", error);
+      console.error('Error saving data:', error);
+    
     }
   };
   
@@ -235,7 +226,6 @@ const MakingUserCV = () => {
   };
 
   const handleAddWorkExperience = () => {
-    // Check if the current job title is not empty before adding a new experience
     const currentJobTitle = workExperience[workExperience.length - 1].jobTitle;
     if (currentJobTitle.trim() !== "") {
       setWorkExperience((prevWorkExperience) => [
@@ -343,8 +333,6 @@ const MakingUserCV = () => {
   return (
     <div>
       
- 
-    <Header/>
     <Background> 
     <div className={styles.page}>
      

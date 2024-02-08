@@ -16,6 +16,7 @@ model Job {
   category       Category       @relation(fields: [categoryId], references: [id])
   company        Company        @relation(fields: [companyId], references: [id])
   notifications  Notification[]
+
 }
 
 model Company {
@@ -29,6 +30,7 @@ model Company {
   companyType    String
   categoryId     Int
   jobs           Job[]
+  
   notifications  Notification[]
 }
 
@@ -59,6 +61,11 @@ model User {
   userImage             String?
   userEmail             String
   userNumber            String
+  userExperince         Json[]
+  userSkills            Json[]
+  userLanguages         Json[]
+  userEducation         Json[]
+  userCertifications    Json[]
   userType              UserType       @default(JobSeeker)
   notificationsReceived Notification[] @relation("recipient")
   notificationsSent     Notification[] @relation("sender")

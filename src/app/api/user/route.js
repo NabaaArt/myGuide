@@ -25,7 +25,7 @@ export async function POST(req) {
 }
 
 export async function PATCH(req) {
-  const { id } = req.params; // Assuming the ID of the category to update is passed in the request parameters
+  const { id } = req.params;
   const body = await req.json();
   try {
     let user = await prisma.user.update({

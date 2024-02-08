@@ -1,0 +1,140 @@
+.box {
+    width: 60%;
+    margin: auto;
+    display: block;
+    justify-content: center;
+   
+  }
+  .column {
+    float: left;
+    width: 100%;
+    margin-bottom: 16px;
+    
+  }
+  
+  .row {
+    margin: 0 -5px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive columns */
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+  
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: start;
+    background-color: var(--background-color);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  
+  .deleteJobBtn {
+    background-color: var(--reject);
+    border: none;
+    color: #eee;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+  }
+  .content {
+    margin-bottom: 8px;
+  }
+  
+  .companyInfo {
+    display: flex;
+    align-items: center;
+  }
+  .companyName {
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-left: 5px;
+  }
+  .deleteJobBtn:hover {
+    background-color: #bb454568;
+    color: var(--reject);
+}
+  
+  .deleteJobBtnContainer {
+    display: flex;
+    flex-flow: row-reverse;
+    justify-content: space-between;
+  }
+  .jobTitle {
+    font-weight: bold;
+  }
+  .companyAddress {
+    margin: 10px 0px;
+    color: var(--text-secondary-color);
+  }
+  
+  .lightLine {
+    color: var(--border-color);
+    border: 0.5px solid var(--border-color);
+    margin: 10px 0px;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .companyName {
+      font-size: 16px;
+    }
+    .companyAddress {
+      font-size: 12px;
+    }
+    .jobTitle {
+      font-size: 16px;
+    }
+    .jobDescribtions {
+      font-size: 14px;
+    }
+  }
+  
+  @media only screen and (max-width: 576px) {
+    .companyName {
+      font-size: 15px;
+    }
+    .companyAddress {
+      font-size: 12px;
+    }
+    .jobTitle {
+      font-size: 13px;
+    }
+    .jobDescribtions {
+      font-size: 14px;
+    }
+  }
+  
+  @media only screen and (max-width: 300px) {
+    .companyName {
+      font-size: 13px;
+    }
+    .companyAddress {
+      font-size: 11px;
+    }
+    .jobTitle {
+      font-size: 12px;
+    }
+    .jobDescribtions {
+      font-size: 13px;
+    }
+  }
+  
