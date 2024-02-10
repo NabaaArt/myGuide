@@ -4,7 +4,7 @@ import AppContainer from "../components/AppContainer/appContainer";
 import SearchBox from "../components/Search/SearchBox";
 import Background from "../components/Background/background";
 import Space from "../components/Space/space";
-import React, { useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import TheFooter from "../components/Footer/footer";
 import "react-tabs/style/react-tabs.css";
 import JobCard from "../components/JobCard/jobCard";
@@ -14,43 +14,44 @@ import QuestionsCard from "../components/QuestionsCard/guestionsCard";
 import InformationCard from "../components/informationCard/informationCard";
 import UserCard from "../components/userCard/userCard";
 import AppliedUserCard from "../components/appliedUsersCard/appliedUsersCard";
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-
+import { useSession } from "next-auth/react";
+// import { getServerAuthSession } from "../server/auth";
 
 export default function Home() {
   const [tab, setTab] = useState(0);
-  const queryClient = new QueryClient()
-//  const [job , setJob]= useState([]);
-//  const [jobList, setJobList] = useState([]);
 
-// const getJobs = async () => {
-//     let url = "http://localhost:3000/api/job";
+  // const authSession = await getServerAuthSession(); //(1)
+  // console.log(authSession);
 
-//     try {
-//       let res = await fetch(url);
-//       let jsonData = await res.json();
-//       setJobList(jsonData);
-//     } catch (error) {
-//       console.error("Error fetching job data:", error);
-//     }
-//   };
+  //  const [job , setJob]= useState([]);
+  //  const [jobList, setJobList] = useState([]);
 
-//   useEffect(() => {
-//   getJobs()
-//   }, []);
-  
+  // const getJobs = async () => {
+  //     let url = "http://localhost:3000/api/job";
+
+  //     try {
+  //       let res = await fetch(url);
+  //       let jsonData = await res.json();
+  //       setJobList(jsonData);
+  //     } catch (error) {
+  //       console.error("Error fetching job data:", error);
+  //     }
+  //   };
+
+  // const { data: session } = useSession();
+  // useEffect(() => {
+  //   console.log({ session });
+  // }, [session]);
+
   return (
     <div>
-   
       <Background>
-        <QueryClientProvider client={queryClient}> 
         <Space height={16} />
         <SearchBox />
         <Space height={26} />
         <InformationCard />
-      
-   
-        <Tabs 
+
+        <Tabs
           //  sticky={true}
           index={tab}
           onTab={(val) => setTab(val)}
@@ -60,8 +61,7 @@ export default function Home() {
           tabs={[
             {
               label: "Jobs",
-              content: <JobCard></JobCard>    
-             
+              content: <JobCard></JobCard>,
             },
             {
               label: "Companies",
@@ -73,18 +73,16 @@ export default function Home() {
             },
             {
               label: "users",
-              content: <UserCard></UserCard>
-             
+              content: <UserCard></UserCard>,
             },
             {
               label: "applied",
-              content: <AppliedUserCard></AppliedUserCard>
-            },          
+              content: <AppliedUserCard></AppliedUserCard>,
+            },
           ]}
-        ></Tabs> 
-        </QueryClientProvider>        
+        ></Tabs>
       </Background>
-      <TheFooter /> 
+      <TheFooter />
     </div>
   );
 }

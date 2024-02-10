@@ -16,22 +16,21 @@ model Job {
   category       Category       @relation(fields: [categoryId], references: [id])
   company        Company        @relation(fields: [companyId], references: [id])
   notifications  Notification[]
-
 }
 
 model Company {
-  id             Int            @id @default(autoincrement())
-  companyName    String
-  companyAddress String
-  companyTitle   String
-  companyImage   String?
-  companyEmail   String
-  companyNumber  String
-  companyType    String
-  categoryId     Int
-  jobs           Job[]
-  
-  notifications  Notification[]
+  id                 Int            @id @default(autoincrement())
+  companyName        String
+  companyAddress     String
+  companyTitle       String
+  companyImage       String?
+  companyEmail       String
+  companyNumber      String
+  companyDescription String?
+  categoryId         Int
+  appliedUser        AppliedUsers[]
+  jobs               Job[]
+  notifications      Notification[]
 }
 
 model Category {
@@ -52,6 +51,14 @@ model Notification {
   sender      User    @relation("sender", fields: [senderId], references: [id])
 }
 
+model AppliedUsers {
+  id        Int     @id @default(autoincrement())
+  userId    Int
+  companyId Int
+  compamny  Company @relation(fields: [companyId], references: [id])
+  user      User    @relation(fields: [userId], references: [id])
+}
+
 model User {
   id                    Int            @id @default(autoincrement())
   userName              String
@@ -59,14 +66,15 @@ model User {
   userAddress           String
   userTitle             String
   userImage             String?
-  userEmail             String
+  userEmail             String         @unique
   userNumber            String
-  userExperince         Json[]
-  userSkills            Json[]
-  userLanguages         Json[]
-  userEducation         Json[]
-  userCertifications    Json[]
+  userExperince         Json?
+  userSkills            Json?
+  userLanguages         Json?
+  userEducation         Json?
+  userCertifications    Json?
   userType              UserType       @default(JobSeeker)
+  appliedUsers          AppliedUsers[]
   notificationsReceived Notification[] @relation("recipient")
   notificationsSent     Notification[] @relation("sender")
 }

@@ -9,36 +9,47 @@ import Background from "../../components/Background/background";
 import axios from "axios";
 
 const MakingUserCV = () => {
-  
-  const saveDataToDatabase = async () => {
-    try {
-      const requestBody = {
-        skills: selectedSkills,
-        languages: selectedLanguages,
-        workExperience: workExperience,
-        education: education,
-        certifications: certifications,
-        photo: formData.photo,
-        address: formData.address,
-        phoneNumber: formData.phoneNumber,
-      };
-  
-      const response = await axios.post('/api/user/', requestBody);
 
-      if (response.status === 201) {
-        const responseData = response.data;
-        console.log(responseData);
-    
-      } else {
-        console.error('Error saving data:', response.statusText);
-   
+  const saveDataToDatabase = async (e) => {
+    e.preventDefault();
+    if (
+      selectedSkills &&
+      selectedLanguages &&
+      workExperience &&
+      education &&
+      certifications &&
+      formData.photo &&
+      formData.address &&
+      formData.phoneNumber
+    ) {
+      try {
+        const requestBody = {
+          skills: selectedSkills,
+          languages: selectedLanguages,
+          workExperience: workExperience,
+          education: education,
+          certifications: certifications,
+          photo: formData.photo,
+          address: formData.address,
+          phoneNumber: formData.phoneNumber,
+        };
+
+        const { data: response }  = await axios.post("/api/user/new", requestBody);
+
+        if (response.status === 201) {
+          const responseData = response.data;
+          console.log(responseData);
+          router.push("/");
+        } else {
+          alert("faild saving data")
+          console.error("Error saving data:", response.statusText);
+        }
+      } catch (error) {
+        alert("error saving data")
+        console.error("Error saving data:", error);
       }
-    } catch (error) {
-      console.error('Error saving data:', error);
-    
     }
   };
-  
 
   const [filterSkills, setFilterSkills] = useState("");
   const [skills, setSkills] = useState([
@@ -278,16 +289,6 @@ const MakingUserCV = () => {
   };
 
   const handleAddEducation = () => {
-    // Check if there's at least one education entry and it has a graduation date
-    const hasGraduationDate = education.some(
-      (edu) => edu.graduationDate !== null
-    );
-
-    if (!hasGraduationDate) {
-      alert("Please enter a graduation date for education.");
-      return;
-    }
-
     setEducation((prevEducation) => [
       ...prevEducation,
       {
@@ -299,14 +300,6 @@ const MakingUserCV = () => {
   };
 
   const handleAddCertification = () => {
-    // Check if there's at least one certification entry and it has an issue date
-    const hasIssueDate = certifications.some((cert) => cert.issueDate !== null);
-
-    if (!hasIssueDate) {
-      alert("Please enter an issue date for certifications.");
-      return;
-    }
-
     setCertifications((prevCertifications) => [
       ...prevCertifications,
       {
@@ -316,11 +309,11 @@ const MakingUserCV = () => {
     ]);
   };
   const [formData, setFormData] = useState({
-    // ... (previous state fields)
     userPhoto: null,
     userAddress: "",
     userPhoneNumber: "",
   });
+
   const handleInputChange = (e) => {
     const { name, value, files } = e.target;
 
@@ -332,179 +325,180 @@ const MakingUserCV = () => {
   };
   return (
     <div>
-      
-    <Background> 
-    <div className={styles.page}>
-     
-      <AppContainer>
+      <Background>
+        <div className={styles.page}>
+          <AppContainer>
+            <Space height={40}> </Space>
+            <h1>Ready to make your CV?</h1>
+            <Space height={30}> </Space>
 
-        <Space height={40}> </Space>
-        <h1>Ready to make your CV?</h1>
-        <Space height={30}> </Space>
+            <h3 className={styles.title}>Enter your photo</h3>
+            <input
+              type="file"
+              name="photo"
+              id="photo"
+              accept="image/*"
+              value={formData.userPhoto}
+              onChange={handleInputChange}
+              className={styles.myInput}
+            />
 
-        <h3 className={styles.title}>Enter your photo</h3>
-        <input
-          type="file"
-          name="photo"
-          id="photo"
-          accept="image/*"
-          value={formData.userPhoto}
-          onChange={handleInputChange}
-          className={styles.myInput}
-        />
+            <Space height={50}> </Space>
 
-        <Space height={50}> </Space>
-         
-        <h3 className={styles.title}>Enter your address</h3>
-        <input
-          type="text"
-          name="address"
-          id="address"
-          placeholder="Enter your address"
-          value={formData.userAddress}
-          onChange={handleInputChange}
-          className={styles.myInput}
-          required
-        />
+            <h3 className={styles.title}>Enter your address</h3>
+            <input
+              type="text"
+              name="userAddress"
+              id="userAddress"
+              placeholder="Enter your address"
+              value={formData.userAddress}
+              onChange={handleInputChange}
+              className={styles.myInput}
+              required
+            />
 
-        <Space height={50}> </Space>
+            <Space height={50}> </Space>
 
-        <h3 className={styles.title}>Enter your phone number</h3>
-        <input
-          type="tel"
-          name="phoneNumber"
-          id="phoneNumber"
-          placeholder="Enter your phone number"
-          value={formData.userPhoneNumber}
-          onChange={handleInputChange}
-          className={styles.myInput}
-          required
-        />
-        <Space  height={50}></Space>
-        <h3 className={styles.title}>Enter your skills</h3>
+            <h3 className={styles.title}>Enter your phone number</h3>
+            <input
+              type="tel"
+              name="userPhoneNumber"
+              id="userPhoneNumber"
+              placeholder="Enter your phone number"
+              value={formData.userPhoneNumber}
+              onChange={handleInputChange}
+              className={styles.myInput}
+              required
+            />
+            <Space height={50}></Space>
+            <h3 className={styles.title}>Enter your skills</h3>
 
-        <input
-          type="text"
-          id="myInputSkills"
-          onChange={handleFilterSkillsChange}
-          value={filterSkills}
-          placeholder="Search for skills.."
-          title="Type in a skill"
-          className={styles.myInput}
-          required
-        />
+            <input
+              type="text"
+              id="myInputSkills"
+              onChange={handleFilterSkillsChange}
+              value={filterSkills}
+              placeholder="Search for skills.."
+              title="Type in a skill"
+              className={styles.myInput}
+              required
+            />
 
-        {filterSkills && (
-          <ul id="myULSkills" className={styles.nameList}>
-            {skillsToShow.map((skill, index) => (
-              <li
-                key={index}
-                className={styles.list}
-                onClick={() => handleSkillSelect(skill)}
-              >
-                {skill}
-              </li>
-            ))}
-          </ul>
-        )}
+            {filterSkills && (
+              <ul id="myULSkills" className={styles.nameList}>
+                {skillsToShow.map((skill, index) => (
+                  <li
+                    key={index}
+                    className={styles.list}
+                    onClick={() => handleSkillSelect(skill)}
+                  >
+                    {skill}
+                  </li>
+                ))}
+              </ul>
+            )}
 
-        <div className={styles.selectedNames}>
-          {selectedSkills.map((selectedSkill, index) => (
-            <div key={index} className={styles.selectedName}>
-              <span>{selectedSkill}</span>
-              <div
-                onClick={() => handleCancelSkillSelect(index)}
-                className={styles.cancelButton}
-              >
-                x
-              </div>
+            <div className={styles.selectedNames}>
+              {selectedSkills.map((selectedSkill, index) => (
+                <div key={index} className={styles.selectedName}>
+                  <span>{selectedSkill}</span>
+                  <div
+                    onClick={() => handleCancelSkillSelect(index)}
+                    className={styles.cancelButton}
+                  >
+                    x
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <Space height={50}> </Space>
+            <Space height={50}> </Space>
 
-        <h3 className={styles.title}>Enter your languages</h3>
+            <h3 className={styles.title}>Enter your languages</h3>
 
-        <input
-          type="text"
-          id="myInputLanguages"
-          onChange={handleFilterLanguagesChange}
-          value={filterLanguages}
-          placeholder="Search for languages.."
-          title="Type in a language"
-          className={styles.myInput}
-          required
-        />
+            <input
+              type="text"
+              id="myInputLanguages"
+              onChange={handleFilterLanguagesChange}
+              value={filterLanguages}
+              placeholder="Search for languages.."
+              title="Type in a language"
+              className={styles.myInput}
+              required
+            />
 
-        {filterLanguages && (
-          <ul id="myULLanguages" className={styles.nameList}>
-            {languagesToShow.map((language, index) => (
-              <li
-                key={index}
-                className={styles.list}
-                onClick={() => handleLanguageSelect(language)}
-              >
-                {language}
-              </li>
-            ))}
-          </ul>
-        )}
+            {filterLanguages && (
+              <ul id="myULLanguages" className={styles.nameList}>
+                {languagesToShow.map((language, index) => (
+                  <li
+                    key={index}
+                    className={styles.list}
+                    onClick={() => handleLanguageSelect(language)}
+                  >
+                    {language}
+                  </li>
+                ))}
+              </ul>
+            )}
 
-        <div className={styles.selectedNames}>
-          {selectedLanguages.map((selectedLanguage, index) => (
-            <div key={index} className={styles.selectedName}>
-              <span>{selectedLanguage}</span>
-              <div
-                onClick={() => handleCancelLanguageSelect(index)}
-                className={styles.cancelButton}
-              >
-                x
-              </div>
+            <div className={styles.selectedNames}>
+              {selectedLanguages.map((selectedLanguage, index) => (
+                <div key={index} className={styles.selectedName}>
+                  <span>{selectedLanguage}</span>
+                  <div
+                    onClick={() => handleCancelLanguageSelect(index)}
+                    className={styles.cancelButton}
+                  >
+                    x
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <Space height={50}> </Space>
-        <h3 className={styles.title}>Enter your work experience</h3>
+            <Space height={50}> </Space>
+            <h3 className={styles.title}>Enter your work experience</h3>
 
-        <div className={styles.workInputStyle}>
-          {workExperience.map((experience, index) => (
-            <div key={index} className={styles.workExperience}>
-              <input
-                className={styles.myInput}
-                type="text"
-                placeholder="Job Title"
-                value={experience.jobTitle}
-                onChange={(e) =>
-                  handleWorkExperienceChange(index, "jobTitle", e.target.value)
-                }
-              />
-              <input
-                className={styles.myInput}
-                type="text"
-                placeholder="Job Description"
-                value={experience.jobDescription}
-                onChange={(e) =>
-                  handleWorkExperienceChange(
-                    index,
-                    "jobDescription",
-                    e.target.value
-                  )
-                }
-              />
-              <input
-                className={styles.myInput}
-                type="text"
-                placeholder="company Name"
-                value={experience.companyName}
-                onChange={(e) =>
-                  handleWorkExperienceChange(
-                    index,
-                    "companyName",
-                    e.target.value
-                  )
-                }
-              />
-              {/* {index > 0 && (
+            <div className={styles.workInputStyle}>
+              {workExperience.map((experience, index) => (
+                <div key={index} className={styles.workExperience}>
+                  <input
+                    className={styles.myInput}
+                    type="text"
+                    placeholder="Job Title"
+                    value={experience.jobTitle}
+                    onChange={(e) =>
+                      handleWorkExperienceChange(
+                        index,
+                        "jobTitle",
+                        e.target.value
+                      )
+                    }
+                  />
+                  <input
+                    className={styles.myInput}
+                    type="text"
+                    placeholder="Job Description"
+                    value={experience.jobDescription}
+                    onChange={(e) =>
+                      handleWorkExperienceChange(
+                        index,
+                        "jobDescription",
+                        e.target.value
+                      )
+                    }
+                  />
+                  <input
+                    className={styles.myInput}
+                    type="text"
+                    placeholder="company Name"
+                    value={experience.companyName}
+                    onChange={(e) =>
+                      handleWorkExperienceChange(
+                        index,
+                        "companyName",
+                        e.target.value
+                      )
+                    }
+                  />
+                  {/* {index > 0 && (
               // <button 
               //   onClick={() => handleRemoveWorkExperience(index)}
               //   className={styles.cancelButton}
@@ -512,50 +506,52 @@ const MakingUserCV = () => {
               //   x
               // </button>
             )} */}
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <button
-          className={styles.addBtn}
-          onClick={handleAddWorkExperience}
-          disabled={!workExperience[workExperience.length - 1].jobTitle.trim()}
-        >
-          Add Work Experience
-        </button>
-        <Space height={50}></Space>
-        <h3 className={styles.title}>Enter your education</h3>
-        <div className={styles.educationInputStyle}>
-          {education.map((edu, index) => (
-            <div key={index} className={styles.education}>
-              <input
-                className={styles.myInput}
-                type="text"
-                placeholder="Degree"
-                value={edu.degree}
-                onChange={(e) =>
-                  handleEducationChange(index, "degree", e.target.value)
-                }
-              />
-              <input
-                className={styles.myInput}
-                type="text"
-                placeholder="Major"
-                value={edu.major}
-                onChange={(e) =>
-                  handleEducationChange(index, "major", e.target.value)
-                }
-              />
-              <input
-                className={styles.myInput}
-                type="text"
-                placeholder="University"
-                value={edu.university}
-                onChange={(e) =>
-                  handleEducationChange(index, "university", e.target.value)
-                }
-              />
+            <button
+              className={styles.addBtn}
+              onClick={handleAddWorkExperience}
+              disabled={
+                !workExperience[workExperience.length - 1].jobTitle.trim()
+              }
+            >
+              Add Work Experience
+            </button>
+            <Space height={50}></Space>
+            <h3 className={styles.title}>Enter your education</h3>
+            <div className={styles.educationInputStyle}>
+              {education.map((edu, index) => (
+                <div key={index} className={styles.education}>
+                  <input
+                    className={styles.myInput}
+                    type="text"
+                    placeholder="Degree"
+                    value={edu.degree}
+                    onChange={(e) =>
+                      handleEducationChange(index, "degree", e.target.value)
+                    }
+                  />
+                  <input
+                    className={styles.myInput}
+                    type="text"
+                    placeholder="Major"
+                    value={edu.major}
+                    onChange={(e) =>
+                      handleEducationChange(index, "major", e.target.value)
+                    }
+                  />
+                  <input
+                    className={styles.myInput}
+                    type="text"
+                    placeholder="University"
+                    value={edu.university}
+                    onChange={(e) =>
+                      handleEducationChange(index, "university", e.target.value)
+                    }
+                  />
 
-              {/* {index > 0 && (
+                  {/* {index > 0 && (
               <button
                 onClick={() => handleRemoveEducation(index)}
                 className={styles.cancelButton}
@@ -563,41 +559,41 @@ const MakingUserCV = () => {
                 x
               </button>
             )} */}
+                </div>
+              ))}
+              <button className={styles.addBtn} onClick={handleAddEducation}>
+                Add Education
+              </button>
             </div>
-          ))}
-          <button className={styles.addBtn} onClick={handleAddEducation}>
-            Add Education
-          </button>
-        </div>
-        <Space height={50}></Space>
-        <h3 className={styles.title}>Enter your certifications</h3>
-        <div className={styles.certificationsInputStyle}>
-          {certifications.map((cert, index) => (
-            <div key={index} className={styles.certification}>
-              <input
-                className={styles.myInput}
-                type="text"
-                placeholder="Certification Name"
-                value={cert.name}
-                onChange={(e) =>
-                  handleCertificationChange(index, "name", e.target.value)
-                }
-              />
-              <input
-                className={styles.myInput}
-                type="text"
-                placeholder="Issuing Organization"
-                value={cert.issuingOrganization}
-                onChange={(e) =>
-                  handleCertificationChange(
-                    index,
-                    "issuingOrganization",
-                    e.target.value
-                  )
-                }
-              />
+            <Space height={50}></Space>
+            <h3 className={styles.title}>Enter your certifications</h3>
+            <div className={styles.certificationsInputStyle}>
+              {certifications.map((cert, index) => (
+                <div key={index} className={styles.certification}>
+                  <input
+                    className={styles.myInput}
+                    type="text"
+                    placeholder="Certification Name"
+                    value={cert.name}
+                    onChange={(e) =>
+                      handleCertificationChange(index, "name", e.target.value)
+                    }
+                  />
+                  <input
+                    className={styles.myInput}
+                    type="text"
+                    placeholder="Issuing Organization"
+                    value={cert.issuingOrganization}
+                    onChange={(e) =>
+                      handleCertificationChange(
+                        index,
+                        "issuingOrganization",
+                        e.target.value
+                      )
+                    }
+                  />
 
-              {/* {index > 0 && (
+                  {/* {index > 0 && (
               <button
                 onClick={() => handleRemoveCertification(index)}
                 className={styles.cancelButton}
@@ -605,22 +601,23 @@ const MakingUserCV = () => {
                 x
               </button>
             )} */}
+                </div>
+              ))}
+              <button
+                className={styles.addBtn}
+                onClick={handleAddCertification}
+              >
+                Add Certification
+              </button>
             </div>
-          ))}
-          <button className={styles.addBtn} onClick={handleAddCertification}>
-            Add Certification
-          </button>
+            <button className={styles.done} onClick={saveDataToDatabase}>
+              <Link className={styles.link} href="/">
+                Done
+              </Link>
+            </button>
+          </AppContainer>
         </div>
-        <button className={styles.done} onClick={saveDataToDatabase}>
-          <Link className={styles.link} href="/">
-            Done
-          </Link>
-        </button>
-        
-      </AppContainer>
- 
-    </div>
-    </Background>
+      </Background>
     </div>
   );
 };

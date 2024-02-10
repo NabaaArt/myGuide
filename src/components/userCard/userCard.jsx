@@ -1,11 +1,9 @@
 'use client';
-import { useState, useEffect } from 'react';
 import styles from './userCard.module.css'
 import { IoIosArrowForward } from "react-icons/io";
 import Link from 'next/link';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-
 
 const UserCard = () => {
 
@@ -20,16 +18,10 @@ const UserCard = () => {
             }
         },
     });
-
     const isError = !!error;
-
-
-
 
     return (
         <div>
-
-
             <Link href='profile' className={styles.link}>
                 {isLoading ? (
                     <p>Loading...</p>

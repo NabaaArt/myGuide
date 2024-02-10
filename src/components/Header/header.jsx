@@ -3,11 +3,21 @@ import Link from "next/link";
 import styles from "./header.module.css"
 import AppContainer from "../AppContainer/appContainer";
 import { IoPersonSharp } from "react-icons/io5"; import { HiViewList } from "react-icons/hi";
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, use } from 'react';
 import { IoNotifications } from "react-icons/io5";
-import { signIn, signOut, useSession, getProviders } from 'next-auth/react'
+import { signOut, getProviders, useSession } from 'next-auth/react'
+
 const Header = () => {
-  const isUserLoggedIn = true;
+  //const isUserLoggedIn = true; 
+  const { data: session } = useSession();
+  const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    if (session) setUser(JSON.parse(session.user.email))
+  }, [session])
+
+  console.log(user)
+
   const [providers, setProviders] = useState(null);
 
   const [showNotificationDropdown, setShowNotificationDropdown] = useState(false);
@@ -41,11 +51,8 @@ const Header = () => {
   useEffect(() => {
     const fetchUserType = async () => {
       try {
-        // Replace this with your actual API endpoint for fetching user type
         const response = await fetch('/api/getUserType');
         const data = await response.json();
-
-        // Assuming your API response has a 'userType' property
         setUserType(data.userType);
       } catch (error) {
         console.error('Error fetching user type:', error);
@@ -56,7 +63,7 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    const setProviders = async () => {
+    const setUpProviders = async () => {
       const response = await getProviders();
       setProviders(response)
     }
@@ -65,7 +72,7 @@ const Header = () => {
     return () => {
       window.removeEventListener('click', closeDropdowns);
     };
-    setProviders();
+    setUpProviders();
   }, []);
 
   return (
@@ -80,25 +87,25 @@ const Header = () => {
           <ul className={styles.navBarIcons}>
             <li><Link className={styles.link} href='/'>Home</Link></li>
 
-            {/* {isUserLoggedIn ? (
+            {user ? (
               <>
-                {userType === 'Recruiter' ? ( */}
-                  <li><Link className={styles.link} href='/companyProfile'><IoPersonSharp /></Link></li>
-                {/* ) : ( */}
+                {user.userType === 'Recruiter' ? (
                   <li><Link className={styles.link} href='/profile'><IoPersonSharp /></Link></li>
-          {/* //       )}
-          //     </>
-          //   ) : (
-          //     //  <Link className={styles.link} href='/signin'>login </Link>
-          //   <>  {
-          //       providers&& Object.values(providers).map((provider)=>(
-          //         <button type="button"
-          //         key={provider.name}
-          //         onClick={()=>signIn(provider.id)}
-          //         ></button>
-          //       ))}
-           
-          //  </>  )} */}
+                ) : (
+                  <li><Link className={styles.link} href='/companyProfile'><IoPersonSharp /></Link></li>
+                )}
+              </>
+            ) : (
+              //  <Link className={styles.link} href='/signin'>login </Link>
+              <>  {
+                providers && Object.values(providers).map((provider) => (
+                  <button type="button"
+                    key={provider.name}
+                    onClick={() => signIn(provider.id)}
+                  ></button>
+                ))}
+
+              </>)}
             <li>
               <div ref={notificationDropdownRef} className={styles.dropdown}>
                 <div onClick={toggleNotificationDropdown} className={styles.notiDropbtn}> <IoNotifications /></div>
@@ -126,7 +133,7 @@ const Header = () => {
                   {/* )} */}
 
                   <Link className={styles.dropdownContentText} href='/postingJobs'>posting jobs</Link>
-                  <button type="button" onClick={signOut}>Sign out</button>
+                  {session !== null && <button type="button" onClick={signOut}>Sign out</button>}
 
                 </div>
               </div>

@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+
 import styles from './companyCard.module.css'
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
@@ -60,7 +60,6 @@ const CompanyCard = () => {
             <div className={styles.companyInfo}>
               <h3 className={styles.companyName}>{company?.companyName}</h3>
               <h4 className={styles.companyAddress}>{company?.companyAddress}</h4>
-
             </div>
             <p className={styles.jobDescribtions}>{company?.companyType}</p>
           </div>

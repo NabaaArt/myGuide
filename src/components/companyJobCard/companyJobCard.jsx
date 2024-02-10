@@ -1,10 +1,9 @@
-
 import styles from './companyJobCard.module.css';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 
 
-const companyJobCard = () => {
+const CompanyJobCard = () => {
   const { data: companyJob, error, isLoading } = useQuery({
     queryKey: ['companyJob'],
     queryFn: async (e) => {
@@ -19,6 +18,24 @@ const companyJobCard = () => {
 
   const isError = !!error;
 
+const deleteJob = async (jobId) =>{
+  try {
+    const response = await fetch(`/api/job/${jobId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    if (response.ok) {
+      const responseData = await response.json();
+      console.log(responseData.message);
+    } else {
+      throw new Error('Failed to delete job');
+    }
+  } catch (error) {
+    console.error('Error deleting job:', error.message);
+  }
+};
   return (
     <div className={styles.box}>
       {isLoading ? (
@@ -40,7 +57,7 @@ const companyJobCard = () => {
                 <hr className={styles.lightLine} />
                 <p className={styles.jobDescribtions}>{job?.jobDescription}</p>
                 <div className={styles.deleteJobBtnContainer}>
-                  <button className={styles.deleteJobBtn}>delete Job</button>
+                  <button className={styles.deleteJobBtn} onClick={() => deleteJob(job.id)}>delete Job</button>
                 </div>
               </div>
             </div>
@@ -53,6 +70,6 @@ const companyJobCard = () => {
   );
 };
 
-export default companyJobCard;
+export default CompanyJobCard;
 
 

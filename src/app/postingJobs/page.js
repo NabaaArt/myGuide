@@ -5,9 +5,10 @@ import { useState } from "react";
 import AppContainer from "../../components/AppContainer/appContainer";
 import Link from "next/link";
 import Background from "../../components/Background/background";
-import Header from "../../components/Header/header";
+import { useRouter } from "next/router";
 
 const postingJob = () => {
+
   const [formData, setFormData] = useState({
     title: "",
     descriptions: "",
@@ -18,22 +19,16 @@ const postingJob = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  
+  const handleSubmit = async (e,data) => {
     e.preventDefault();
-
     try {
-      const response = await fetch("/api/posting-job", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const responseData = await response.json();
+       const { data: response } = await axios.post('/api/job/posting-job', data);
+     return response.data; 
       console.log("Job posted successfully:", responseData);
-      alert("Job posted successfully");
-      Router.push("/companyProfile");
+      alert("Job posted successfully");  //////////////
+      const router = useRouter();
+      router.push("/companyProfile");
     } catch (error) {
       console.error("Error posting job:", error);
     }
@@ -41,7 +36,6 @@ const postingJob = () => {
 
   return (
     <div >
-      <Header></Header> 
       <Background>
       <div className={styles.page}>
         <Space height={100}> </Space>

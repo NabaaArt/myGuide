@@ -1,63 +1,37 @@
-'use client';
+"use client";
 import styles from "./page.module.css";
 import Header from "../../components/Header/header";
 import { useState } from "react";
 import Space from "../../components/Space/space";
 import Link from "next/link";
 
-
 const Singin = () => {
-  
-  // State to manage form inputs
   const [formData, setFormData] = useState({
-   fullName: "",
- 
+    fullName: "",
     email: "",
     password: "",
     repeatPassword: "",
-    userType: "person", // Default to "person"
+    userType: "",
   });
 
-  // Function to handle form input changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e, data) => {
     e.preventDefault();
-
     try {
-      // Make an HTTP POST request to your server endpoint to save user data
-      const response = await fetch('/api/save-user', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      // Check if the response status is in the range of 200-299 for success
-      if (response.ok) {
-        const responseData = await response.json();
-        // Handle the response as needed (e.g., show a success message)
-        console.log(responseData);
-      } else {
-        // Handle errors (e.g., show an error message)
-        console.error('Error saving user data:', response.statusText);
-      }
+      const { data: response } = await axios.post("/api/signin", data);
+      return response.data;
     } catch (error) {
-      // Handle other errors (e.g., network issues)
-      console.error('Error saving user data:', error);
+      alert("faild signning in , please try again");
+      console.error("Error saving user data:", error);
     }
   };
-
-  
-
   return (
     <div>
-<Header></Header>
-      <form  onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className={styles.container}>
           <h1>SIGN IN</h1>
           <h2> welcome to the website </h2>
@@ -77,8 +51,6 @@ const Singin = () => {
             onChange={handleInputChange}
             required
           />
-
-        
 
           <label htmlFor="email">
             <b>Email</b>
@@ -118,22 +90,25 @@ const Singin = () => {
             name="repeatPassword"
             id="psw-repeat"
             value={formData.repeatPassword}
-  onChange={handleInputChange}
+            onChange={handleInputChange}
             required
           />
-  <label htmlFor="options">
-            <b>Select if you are an person who are searching for jobs or a company that has jobs to offer</b>
+          <label htmlFor="options">
+            <b>
+              Select if you are an person who are searching for jobs or a
+              company that has jobs to offer
+            </b>
           </label>
           <div className={styles.dropdownContainer}>
-        
-            <select id="dropdown" className={styles.dropdownInput}
-             value={formData.userType}
-             onChange={handleInputChange}>
+            <select
+              id="dropdown"
+              className={styles.dropdownInput}
+              value={formData.userType}
+              onChange={handleInputChange}
+            >
               <option value="person">{"Person (employee)"}</option>
               <option value="company">Company</option>
-       
             </select>
-        
           </div>
           <hr className={styles.hr} />
           <p>
@@ -142,7 +117,10 @@ const Singin = () => {
           </p>
 
           <button className={styles.signInBtn} type="submit">
-            <Link className={styles.link} href="/makingUserCV" > Sign in</Link> 
+            <Link className={styles.link} href="/makingUserCV">
+              {" "}
+              Sign in
+            </Link>
           </button>
         </div>
 
@@ -152,8 +130,7 @@ const Singin = () => {
           </p>
         </div>
       </form>
-     <Space height={50}></Space>
-  
+      <Space height={50}></Space>
     </div>
   );
 };

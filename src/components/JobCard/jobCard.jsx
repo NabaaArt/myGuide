@@ -1,7 +1,7 @@
-
 import styles from './jobCard.module.css';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery} from '@tanstack/react-query';
 import axios from 'axios';
+import { ReactQueryDevtools } from 'react-query/devtools';
 
 
 const JobCard = () => {
@@ -19,10 +19,14 @@ const JobCard = () => {
 
 
   const isError = !!error;
-const handleApply = ()=>{
+  
+const handleApply = async (data) => {
   alert("you have been applied to this job successfully, wait to get a notification from the company , good luck");
-    
-}
+  const { data: response } = await axios.post('/api/appliedUsers', data);
+  return response.data; 
+  };
+  
+
   return (
     <div className={styles.box}>
       {isLoading ? (
@@ -54,6 +58,7 @@ const handleApply = ()=>{
         <h2>Sorry, no jobs available.</h2>
       )}
     </div>
+    
   );
 };
 
