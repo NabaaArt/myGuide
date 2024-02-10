@@ -11,7 +11,8 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import CompanyJobCard from "../../components/companyJobCard/companyJobCard";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams } from "next/navigation";
+
 
 const CompanyProfile = () => {
   const { companyId } = useParams();
